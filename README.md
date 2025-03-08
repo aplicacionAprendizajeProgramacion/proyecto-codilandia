@@ -1,7 +1,7 @@
 
 # PROYECTO CODILANDIA
 
-# AUTORES:
+## AUTORES:
 ####   Irene Pascual Albericio   -   871627
 ####   Jorge Martínez Pérez      -   844781
 
