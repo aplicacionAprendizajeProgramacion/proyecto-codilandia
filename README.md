@@ -5,6 +5,8 @@
 ####   Irene Pascual Albericio   -   871627
 ####   Jorge Martínez Pérez      -   844781
 
+
+
 Este proyecto contiene el **frontend** y **backend** de la aplicación Codilandia, organizados como submódulos dentro de un repositorio principal llamado `proyecto-codilandia`.
 
 ## Flujo de trabajo con Git
