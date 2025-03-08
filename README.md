@@ -13,15 +13,15 @@ Este proyecto contiene el **frontend** y **backend** de la aplicación Codilandi
 
 Este flujo de trabajo describe cómo manejar los cambios cuando se trabaja con los submódulos de **frontend** (`codilandia-frontend`) y **backend** (`codilandia-backend`).
 
-```markdown
 ### Estructura del Proyecto
 
+```markdown
 GITHUB-CODILANDIA/  
 ├── proyecto-codilandia/         # Repositorio principal  
 │    ├── codilandia-frontend/    # Submódulo frontend (Angular)  
 │    └── codilandia-backend/     # Submódulo backend (Node.js/Express)  
 └── README.md
-
+```
 -----------------------------------------------------------------
 
 ## Trabajar con el Repositorio Principal
