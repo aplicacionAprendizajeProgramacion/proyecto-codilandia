@@ -1,0 +1,6 @@
+[submodule "codilandia-frontend"]
+	path = codilandia-frontend
+	url = https://github.com/Irenepascual/codilandia-frontend.git
+[submodule "codilandia-backend"]
+	path = codilandia-backend
+	url = https://github.com/Irenepascual/codilandia-backend.git
