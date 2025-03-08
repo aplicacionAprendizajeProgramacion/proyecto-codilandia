@@ -30,9 +30,12 @@ El repositorio principal `proyecto-codilandia` contiene los submódulos de **fro
 
 ### 1. Clonar el Repositorio Principal con Submódulos
 Cuando clonas el repositorio `proyecto-codilandia` por primera vez, asegúrate de usar el flag `--recurse-submodules` para clonar también los submódulos:
+```markdown
     --> git clone --recurse-submodules https://github.com/tu-usuario/proyecto-codilandia.git
+```
 
 Si se ha clonado el repositorio sin submódulos (git clone https://github.com/tu-usuario/proyecto-codilandia.git), puedes ejecutar el siguiente comando para inicializar y actualizar los submódulos:
+```markdown
     --> git submodule update --init --recursive
 
     SI ES LA PRIMERA VEZ QUE SE CLONA --> INSTALAR DEPENDENCIAS:
@@ -48,17 +51,19 @@ Si se ha clonado el repositorio sin submódulos (git clone https://github.com/tu
         (si por alguna razón las dependencias no se han instalado correctamente, probar a hacer lo siguiente):
             --> rm -rf node_modules
             --> npm install        
-
+```
 
 ### 2. Iniciar el proyecto
+```markdown
     Backend:
         npm start
 
     Frontend:
         ng serve
-
+```
 
 ### 3. Subir cambios de Backend o Frontend ########################################
+```markdown
     --> cd codilandia-backend  || cd codilandia-frontend
 
     --> git pull origin main                // Actualizar la rama principal
@@ -70,9 +75,10 @@ Si se ha clonado el repositorio sin submódulos (git clone https://github.com/tu
     --> git pull origin main                // Actualizar la rama principal (main) con los cambios
     --> git merge nombre_rama               // Fusionar las dos ramas
     --> git push origin main                // Subir los cambios fusionados
-
+```
 
 ### 4. Subir cambios de Backend Y Frontend #######################################
+```markdown
     --> cd ..                               // Debemos estar en repositorio proyecto-codilandia
     --> git pull --recurse-submodules
     --> git submodule status
@@ -82,10 +88,11 @@ Si se ha clonado el repositorio sin submódulos (git clone https://github.com/tu
 
     // ¿Qué pasa si hay conflictos en los submódulos? 
     // Para resolver esos conflictos, hay que hacer los cambios del backend y frontend por separado (punto 2). 
-
+```
 
 ### 5. Recuperar cambios del Backend y Frontend ##################################
+```markdown
     --> cd ..                               // Debemos estar en repositorio proyecto-codilandia
     --> git pull --recurse-submodules
-
+```
 
