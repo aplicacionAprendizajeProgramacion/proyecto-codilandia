@@ -1,7 +1,5 @@
 
-# ######################################## #
-#          PROYECTO CODILANDIA             #
-# ######################################## #
+# PROYECTO CODILANDIA
 
 # AUTORES:
 #   Irene Pascual Albericio   -   871627
