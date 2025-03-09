@@ -66,15 +66,15 @@ Si se ha clonado el repositorio sin submódulos (git clone https://github.com/tu
 ```markdown
     --> cd codilandia-backend  || cd codilandia-frontend
 
-    --> git pull origin main                // Actualizar la rama principal
+    --> git pull origin master              // Actualizar la rama principal
     --> git checkout -b nombre_rama         // Crear nueva rama
     --> git add .                           // Agregar los archivos modificados
     --> git commit -m "mensaje"             // Hacer el commit
     --> git push origin nombre_rama         // Subir los cambios al repositorio
-    --> git checkout main                   // Asegurarse que estás en la rama principal (main)
-    --> git pull origin main                // Actualizar la rama principal (main) con los cambios
+    --> git checkout master                 // Asegurarse que estás en la rama principal (main)
+    --> git pull origin master              // Actualizar la rama principal (main) con los cambios
     --> git merge nombre_rama               // Fusionar las dos ramas
-    --> git push origin main                // Subir los cambios fusionados
+    --> git push origin master              // Subir los cambios fusionados
 ```
 
 ### 4. Subir cambios de Backend Y Frontend #######################################
@@ -84,7 +84,7 @@ Si se ha clonado el repositorio sin submódulos (git clone https://github.com/tu
     --> git submodule status
     --> git add codilandia-backend codilandia-frontend
     --> git commit -m "mensaje"
-    --> git push origin main
+    --> git push origin master
 
     // ¿Qué pasa si hay conflictos en los submódulos? 
     // Para resolver esos conflictos, hay que hacer los cambios del backend y frontend por separado (punto 2). 
