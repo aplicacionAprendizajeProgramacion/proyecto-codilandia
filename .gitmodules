@@ -1,7 +1,0 @@
-[submodule "codilandia-frontend"]
-	path = codilandia-frontend
-	url = git@github.com:Irenepascual/codilandia-frontend.git
-
-[submodule "codilandia-backend"]
-	path = codilandia-backend
-	url = git@github.com:Irenepascual/codilandia-backend.git
