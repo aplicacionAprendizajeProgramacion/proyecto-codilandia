@@ -69,7 +69,7 @@ export class NivelesNinosComponent implements OnInit {
 
   getNombreAula():void{
     this.isLoading = true;
-    fetch(`http://localhost:3000/api/aulas/aula/nombre/${this.codigo_aula}`)
+    fetch(`https://proyecto-codilandia-backend.onrender.com/api/aulas/aula/nombre/${this.codigo_aula}`)
       .then(r => r.json())
       .then(json => this.nombreAula = json.nombre_aula)
       .catch(() => this.nombreAula = '')
@@ -81,7 +81,7 @@ export class NivelesNinosComponent implements OnInit {
 
   getNivelActual(): void {
     this.isLoading = true;
-    fetch(`http://localhost:3000/api/aulas/nivel-actual/${this.correo}/${this.nombre}/${this.codigo_aula}`)
+    fetch(`https://proyecto-codilandia-backend.onrender.com/api/aulas/nivel-actual/${this.correo}/${this.nombre}/${this.codigo_aula}`)
       .then(res => res.json())
       .then(data => {
         if (data.nivel_actual && !isNaN(Number(data.nivel_actual))) {
@@ -101,7 +101,7 @@ export class NivelesNinosComponent implements OnInit {
   }
 
   fetchNotasYMedia() {
-    const base = `http://localhost:3000/api/aulas/alumnos/nota-media/${this.codigo_aula}/`
+    const base = `https://proyecto-codilandia-backend.onrender.com/api/aulas/alumnos/nota-media/${this.codigo_aula}/`
                + `${encodeURIComponent(this.correo)}/`
                + `${encodeURIComponent(this.nombre)}`;
     // Nota media
@@ -111,7 +111,7 @@ export class NivelesNinosComponent implements OnInit {
       .catch(() => this.notaMedia = null);
 
     // Listado de notas por nivel
-    const urlNotas = `http://localhost:3000/api/aulas/alumnos/notas/${this.codigo_aula}/`
+    const urlNotas = `https://proyecto-codilandia-backend.onrender.com/api/aulas/alumnos/notas/${this.codigo_aula}/`
                    + `${encodeURIComponent(this.correo)}/`
                    + `${encodeURIComponent(this.nombre)}`;
     fetch(urlNotas)

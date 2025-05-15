@@ -34,7 +34,7 @@ export class RecuperacionComponent implements OnInit {
     }
 
     this.isLoading = true;
-    this.http.post<any>('http://localhost:3000/api/users/update-password', {
+    this.http.post<any>('https://proyecto-codilandia-backend.onrender.com/api/users/update-password', {
       email: this.email,
       username: this.username,
       newPassword: this.newPassword

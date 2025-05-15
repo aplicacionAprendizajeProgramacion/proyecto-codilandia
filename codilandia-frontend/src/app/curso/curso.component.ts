@@ -42,7 +42,7 @@ export class CursoComponent implements OnInit {
     this.codigoAula = this.route.snapshot.paramMap.get('codigo'); 
     
     if (this.codigoAula) {
-      this.http.get<Curso[]>(`http://localhost:3000/api/aulas/aula?codigo=${this.codigoAula}`).subscribe({
+      this.http.get<Curso[]>(`https://proyecto-codilandia-backend.onrender.com/api/aulas/aula?codigo=${this.codigoAula}`).subscribe({
         next: (res) => {
           this.curso = res[0];
           this.isLoading = false;
@@ -53,7 +53,7 @@ export class CursoComponent implements OnInit {
       });
     }
       if (this.codigoAula) {
-        this.http.get<Solicitud[]>(`http://localhost:3000/api/aulas/aula/${this.codigoAula}/solicitudes`).subscribe({
+        this.http.get<Solicitud[]>(`https://proyecto-codilandia-backend.onrender.com/api/aulas/aula/${this.codigoAula}/solicitudes`).subscribe({
           next: (res) => {
             if (res.length > 0) {
               this.solicitudes = res; 

@@ -43,7 +43,7 @@ export class SolictudesComponent implements OnInit {
       this.codigoAula = this.route.snapshot.paramMap.get('codigo'); 
       
       if (this.codigoAula) {
-        this.http.get<Solicitud[]>(`http://localhost:3000/api/aulas/aula/${this.codigoAula}/solicitudes`).subscribe({
+        this.http.get<Solicitud[]>(`https://proyecto-codilandia-backend.onrender.com/api/aulas/aula/${this.codigoAula}/solicitudes`).subscribe({
           next: (res) => {
             if (res.length > 0) {
               this.solicitudes = res;
@@ -58,7 +58,7 @@ export class SolictudesComponent implements OnInit {
       }
 
       if (this.codigoAula) {
-        this.http.get<Curso[]>(`http://localhost:3000/api/aulas/aula?codigo=${this.codigoAula}`).subscribe({
+        this.http.get<Curso[]>(`https://proyecto-codilandia-backend.onrender.com/api/aulas/aula?codigo=${this.codigoAula}`).subscribe({
           next: (res) => {
             this.curso = res[0];
             this.isLoading = false; 
@@ -96,10 +96,10 @@ export class SolictudesComponent implements OnInit {
 
   cancelar(solicitud: any) {
     this.isLoading = true;
-    this.http.delete(`http://localhost:3000/api/aulas/aula/${this.codigoAula}/solicitudes/${solicitud.correo_nino}`).subscribe({
+    this.http.delete(`https://proyecto-codilandia-backend.onrender.com/api/aulas/aula/${this.codigoAula}/solicitudes/${solicitud.correo_nino}`).subscribe({
       next: () => {
         if (this.codigoAula) {
-          this.http.get<Solicitud[]>(`http://localhost:3000/api/aulas/aula/${this.codigoAula}/solicitudes`).subscribe({
+          this.http.get<Solicitud[]>(`https://proyecto-codilandia-backend.onrender.com/api/aulas/aula/${this.codigoAula}/solicitudes`).subscribe({
             next: (res) => {
               if (res.length > 0) {
                 this.isLoading = false;
@@ -129,7 +129,7 @@ export class SolictudesComponent implements OnInit {
     // 1) Inserto al niño
     this.http
       .post(
-        `http://localhost:3000/api/aulas/pertenece`,
+        `https://proyecto-codilandia-backend.onrender.com/api/aulas/pertenece`,
         {
           correo_nino: solicitud.correo_nino,
           nombre_nino: solicitud.nombre_nino,
@@ -144,7 +144,7 @@ export class SolictudesComponent implements OnInit {
           // 2) Cuando termine, borro la solicitud
           this.http
             .delete(
-              `http://localhost:3000/api/aulas/aula/${this.codigoAula}/solicitudes/${solicitud.correo_nino}/${solicitud.nombre_nino}`
+              `https://proyecto-codilandia-backend.onrender.com/api/aulas/aula/${this.codigoAula}/solicitudes/${solicitud.correo_nino}/${solicitud.nombre_nino}`
             )
             .subscribe({
               next: (delRes) => {

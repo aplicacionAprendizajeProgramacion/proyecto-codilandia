@@ -38,8 +38,8 @@ export class RegistroComponent {
     }
   
     const endpoint = this.tipoUsuario === 'adulto' 
-      ? 'http://localhost:3000/api/users/adulto'
-      : 'http://localhost:3000/api/users/nino';
+      ? 'https://proyecto-codilandia-backend.onrender.com/api/users/adulto'
+      : 'https://proyecto-codilandia-backend.onrender.com/api/users/nino';
   
     this.http.post(endpoint, {
       correo_usuario: this.correo_usuario,
@@ -49,7 +49,7 @@ export class RegistroComponent {
       next: (res: any) => {
         console.log('Registro exitoso:', res);
         
-        this.http.post<any>('http://localhost:3000/api/auth/login', {
+        this.http.post<any>('https://proyecto-codilandia-backend.onrender.com/api/auth/login', {
           correo_usuario: this.correo_usuario,
           nombre_usuario: this.nombre_usuario,
           contrasena: this.contrasena

@@ -95,7 +95,7 @@ export class Nivel11Component {
     }
 
     this.http
-      .put<any>('http://localhost:3000/api/niveles/actualizar', {
+      .put<any>('https://proyecto-codilandia-backend.onrender.com/api/niveles/actualizar', {
         correo_nino: this.correo_nino,
         nombre_nino: this.nombre_nino,
         codigo_aula: this.codigo_aula,

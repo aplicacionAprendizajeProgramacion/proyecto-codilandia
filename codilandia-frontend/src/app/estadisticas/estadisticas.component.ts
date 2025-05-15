@@ -94,7 +94,7 @@ export class EstadisticasComponent implements OnInit {
       this.codigoAula = this.route.snapshot.paramMap.get('codigo'); 
       
       if (this.codigoAula) {
-        this.http.get<Curso[]>(`http://localhost:3000/api/aulas/aula?codigo=${this.codigoAula}`).subscribe({
+        this.http.get<Curso[]>(`https://proyecto-codilandia-backend.onrender.com/api/aulas/aula?codigo=${this.codigoAula}`).subscribe({
           next: (res) => {
             this.curso = res[0];
             this.isLoading = false;
@@ -106,7 +106,7 @@ export class EstadisticasComponent implements OnInit {
       }
   
       if (this.codigoAula) {
-        this.http.get<Alumno[]>(`http://localhost:3000/api/aulas/alumnos?codigo=${this.codigoAula}`).subscribe({
+        this.http.get<Alumno[]>(`https://proyecto-codilandia-backend.onrender.com/api/aulas/alumnos?codigo=${this.codigoAula}`).subscribe({
           next: (res) => {
             this.alumnos = res;
             this.nivelMedio();
@@ -183,7 +183,7 @@ export class EstadisticasComponent implements OnInit {
   
   getNotaMedia(alumno: any) {
     this.isLoading = true;
-    const url = `http://localhost:3000/api/aulas/alumnos/nota-media/`
+    const url = `https://proyecto-codilandia-backend.onrender.com/api/aulas/alumnos/nota-media/`
               + `${this.codigoAula}/`
               + `${encodeURIComponent(alumno.correo_nino)}/`
               + `${encodeURIComponent(alumno.nombre_nino)}`;
@@ -206,7 +206,7 @@ export class EstadisticasComponent implements OnInit {
   
   getNotas(alumno: any) {
     this.isLoading = true;
-    this.http.get<any[]>(`http://localhost:3000/api/aulas/alumnos/notas/${this.codigoAula}/${alumno.correo_nino}/${alumno.nombre_nino}`).subscribe({
+    this.http.get<any[]>(`https://proyecto-codilandia-backend.onrender.com/api/aulas/alumnos/notas/${this.codigoAula}/${alumno.correo_nino}/${alumno.nombre_nino}`).subscribe({
       next: (res) => {
         this.selectedAlumno.notas = res; 
         this.selectedAlumno.notasMap = {};

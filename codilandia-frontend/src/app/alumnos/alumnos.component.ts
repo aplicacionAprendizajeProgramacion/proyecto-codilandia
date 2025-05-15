@@ -43,7 +43,7 @@ export class AlumnosComponent implements OnInit{
     this.codigoAula = this.route.snapshot.paramMap.get('codigo'); 
     
     if (this.codigoAula) {
-      this.http.get<Curso[]>(`http://localhost:3000/api/aulas/aula?codigo=${this.codigoAula}`).subscribe({
+      this.http.get<Curso[]>(`https://proyecto-codilandia-backend.onrender.com/api/aulas/aula?codigo=${this.codigoAula}`).subscribe({
         next: (res) => {
           this.curso = res[0];
           this.isLoading = false;
@@ -55,7 +55,7 @@ export class AlumnosComponent implements OnInit{
     }
 
     if (this.codigoAula) {
-      this.http.get<Alumno[]>(`http://localhost:3000/api/aulas/alumnos?codigo=${this.codigoAula}`).subscribe({
+      this.http.get<Alumno[]>(`https://proyecto-codilandia-backend.onrender.com/api/aulas/alumnos?codigo=${this.codigoAula}`).subscribe({
         next: (res) => {
           this.alumnos = res;
         },
@@ -93,10 +93,10 @@ export class AlumnosComponent implements OnInit{
   eliminar(alumno: any){
     console.log(alumno)
         this.isLoading = true;
-        this.http.delete(`http://localhost:3000/api/aulas/aula/${this.codigoAula}/alumnos/${alumno.correo_nino}`).subscribe({
+        this.http.delete(`https://proyecto-codilandia-backend.onrender.com/api/aulas/aula/${this.codigoAula}/alumnos/${alumno.correo_nino}`).subscribe({
           next: () => {
             if (this.codigoAula) {
-              this.http.get<Alumno[]>(`http://localhost:3000/api/aulas/alumnos?codigo=${this.codigoAula}`).subscribe({
+              this.http.get<Alumno[]>(`https://proyecto-codilandia-backend.onrender.com/api/aulas/alumnos?codigo=${this.codigoAula}`).subscribe({
                 next: (res) => {
                   if (res.length > 0) {
                     this.isLoading = false;

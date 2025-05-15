@@ -57,7 +57,7 @@ export class InicioNinoComponent implements OnInit {
 
   obtenerCursos(): void {
     this.isLoading = true;
-    this.http.get<any>(`http://localhost:3000/api/aulas/${this.correo}/${this.nombre}`).subscribe({
+    this.http.get<any>(`https://proyecto-codilandia-backend.onrender.com/api/aulas/${this.correo}/${this.nombre}`).subscribe({
       next: (res) => {
         if (res.length > 0) {
           this.cursos = res; 
@@ -89,7 +89,7 @@ export class InicioNinoComponent implements OnInit {
     }
 
     // Comprobación de grupos a los que está unido
-    this.http.get<any[]>(`http://localhost:3000/api/aulas/${this.correo}/${this.nombre}`).subscribe({
+    this.http.get<any[]>(`https://proyecto-codilandia-backend.onrender.com/api/aulas/${this.correo}/${this.nombre}`).subscribe({
       next: (res) => {
         console.log(res.length);
         if (res.length >= 3) {
@@ -102,7 +102,7 @@ export class InicioNinoComponent implements OnInit {
         const today = new Date().toISOString(); 
               
         // Enviar la solicitud POST para incluir la solicitud
-        this.http.post('http://localhost:3000/api/aulas/unirse', {
+        this.http.post('https://proyecto-codilandia-backend.onrender.com/api/aulas/unirse', {
           correo: this.correo,
           nombre: this.nombre,
           codigo: this.groupCode,
@@ -143,7 +143,7 @@ export class InicioNinoComponent implements OnInit {
   
 
   navigateToNiveles(): void {
-    this.http.get<any>(`http://localhost:3000/api/aulas/individual/${this.correo}/${this.nombre}`)
+    this.http.get<any>(`https://proyecto-codilandia-backend.onrender.com/api/aulas/individual/${this.correo}/${this.nombre}`)
       .subscribe({
         next: (res) => {
           const codigo_aula = res.codigo_aula;

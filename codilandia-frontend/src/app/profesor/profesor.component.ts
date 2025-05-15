@@ -68,7 +68,7 @@ export class ProfesorComponent implements OnInit{
     this.isLoading = true;
     const codigoGenerado = this.generateCodigoAula();
         // Enviar la solicitud POST para incluir la solicitud
-        this.http.post('http://localhost:3000/api/aulas/crear-aula', {
+        this.http.post('https://proyecto-codilandia-backend.onrender.com/api/aulas/crear-aula', {
           codigo_aula: codigoGenerado,
           nombre_aula: this.nombreAula,
         }).subscribe({
@@ -89,7 +89,7 @@ export class ProfesorComponent implements OnInit{
     const totalLevels = 15;
   
     for (let i = 1; i <= totalLevels; i++) {
-      this.http.post('http://localhost:3000/api/aulas/niveles', {
+      this.http.post('https://proyecto-codilandia-backend.onrender.com/api/aulas/niveles', {
         numero_nivel: i,
         codigo_aula: codigo,
         nombre_nivel: `Nivel - ${i}`,
@@ -111,7 +111,7 @@ export class ProfesorComponent implements OnInit{
   
 
   CreateAulaVirtual(codigo: number){
-    this.http.post('http://localhost:3000/api/aulas/crear-aula-virtual', {
+    this.http.post('https://proyecto-codilandia-backend.onrender.com/api/aulas/crear-aula-virtual', {
       codigo_aula: codigo,
       correo_adulto: this.correo_usuario,
       nombre_adulto: this.nombre_usuario,
@@ -129,7 +129,7 @@ export class ProfesorComponent implements OnInit{
 
 
   obtenerCursos(): void {
-    this.http.get<any>(`http://localhost:3000/api/aulas/adulto/${this.correo_usuario}/${this.nombre_usuario}`).subscribe({
+    this.http.get<any>(`https://proyecto-codilandia-backend.onrender.com/api/aulas/adulto/${this.correo_usuario}/${this.nombre_usuario}`).subscribe({
       next: (res) => {
         if (res.length > 0) {
           this.isLoading = false;

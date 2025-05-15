@@ -32,7 +32,7 @@ export class InicioSesionComponent {
     this.isLoading = true;
     this.errorMessage = '';
 
-    this.http.post<any>('http://localhost:3000/api/auth/login', {
+    this.http.post<any>('https://proyecto-codilandia-backend.onrender.com/api/auth/login', {
       nombre_usuario: this.nombre_usuario,
       correo_usuario: this.correo_usuario,
       contrasena: this.contrasena
@@ -85,7 +85,7 @@ export class InicioSesionComponent {
 
     this.isLoading = true;
     
-    this.http.get<any>(`http://localhost:3000/api/users/get-usernames-by-email?email=${this.resetCorreo}`)
+    this.http.get<any>(`https://proyecto-codilandia-backend.onrender.com/api/users/get-usernames-by-email?email=${this.resetCorreo}`)
       .subscribe({
         next: (res) => {
           this.usernames = res.usernames;
@@ -109,7 +109,7 @@ export class InicioSesionComponent {
   
     this.isLoading = true;
   
-    this.http.get(`http://localhost:3000/api/users/send-reset-email?email=${this.resetCorreo}&username=${this.selectedPerfil}`)
+    this.http.get(`https://proyecto-codilandia-backend.onrender.com/api/users/send-reset-email?email=${this.resetCorreo}&username=${this.selectedPerfil}`)
       .subscribe({
         next: () => {
           alert('Correo enviado. Revise su bandeja de entrada');
