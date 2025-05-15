@@ -1,0 +1,66 @@
+<div class="screen-container">
+  <div class="header">
+    <button class="volver" (click)="router.navigate(['/'])">◀ VOLVER</button>
+    <img src="logo.png" alt="Logo de Codilandia" class="logo" />
+  </div>
+
+  <div class="modal-overlay" *ngIf="isLoading">
+    <div class="spinner-modal">
+      <div class="spinner"></div>
+    </div>
+  </div>
+  
+  <div class="content">
+    <div class="nombre-container">
+      <h1>{{ nombre }}</h1>
+    </div>
+
+    <div class="mis-cursos-container">
+      <div class="mis-cursos">
+        <h2>Mis Cursos</h2>
+        <div *ngIf="cursos.length > 0" class="curso-list">
+          <div *ngFor="let curso of cursos" class="curso" (click)="navigateToNivelesFromCurso(curso)">
+            <p>{{ curso.nombre_aula }}</p>
+          </div>
+        </div>
+        <div *ngIf="cursos.length === 0" class="no-cursos">
+          <p>No tienes cursos asignados.</p>
+        </div>
+      </div>
+
+      <div class="botones">
+        
+        <!--Botón para unirse a un grupo-->
+        <button class="btn-join-group" (click)="openJoinGroupModal()">Unirme a un grupo</button>
+
+
+        <div class="popup-overlay" *ngIf="isJoinGroupModalOpen">
+          <div class="join-group-modal">
+            <h3>Unirse a un grupo</h3>
+
+            <label for="groupCode">Código de grupo:</label>
+            <input
+              id="groupCode"
+              type="text"
+              [(ngModel)]="groupCode"
+              name="groupCode"
+              placeholder="Ingrese el código del grupo"
+              required
+            />
+            
+            <button class="btn-submit" (click)="joinGroup()">Aceptar</button>
+            
+            <button class="btn-submit" (click)="closeJoinGroupModal()">Cancelar</button>
+
+            <div *ngIf="successMessage" class="error-message">
+              {{ successMessage }}
+            </div>
+          </div>
+        </div>
+
+        <button (click)="navigateToNiveles()">Individual</button>
+          
+      </div>
+    </div>
+  </div>
+</div>

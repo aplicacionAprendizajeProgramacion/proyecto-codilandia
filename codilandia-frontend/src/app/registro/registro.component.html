@@ -1,0 +1,59 @@
+<div class="screen-container">
+  <button class="volver" (click)="volver()">◀ VOLVER</button>
+
+  <img src="logo.png" alt="Logo de Codilandia" class="logo" />
+
+  <div class="modal-overlay" *ngIf="isLoading">
+    <div class="spinner-modal">
+      <div class="spinner"></div>
+    </div>
+  </div>
+  
+  <div class="registro-container">
+      <h1>REGISTRARSE</h1>
+
+      <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+      <form (ngSubmit)="onSubmit()">
+          <label for="email">EMAIL:</label>
+          <input
+              id="email"
+              type="email"
+              [(ngModel)]="correo_usuario"
+              name="correo_usuario"  
+              required
+          />
+
+          <label for="nombre">NOMBRE DE USUARIO:</label>
+          <input
+              id="nombre"
+              type="text"
+              [(ngModel)]="nombre_usuario"
+              name="nombre_usuario" 
+              required
+          />
+
+          <label for="contrasena">CONTRASEÑA:</label>
+          <input
+              id="contrasena"
+              type="password"
+              [(ngModel)]="contrasena"
+              name="contrasena" 
+              required
+          />
+
+          <label for="tipo">SOY...</label>
+          <select
+              id="tipo"
+              [(ngModel)]="tipoUsuario"
+              name="tipoUsuario" 
+              required
+          >
+              <option value="nino">ALUMNO</option>
+              <option value="adulto">ADULTO</option>
+          </select>
+
+          <button class="btn-submit" type="submit" [disabled]="isLoading">Registrarse</button>
+        </form>
+  </div>
+</div>

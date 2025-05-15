@@ -1,0 +1,265 @@
+<div class="nivel6-container">
+  <button class="volver" (click)="router.navigate(['/nivelesNinos'])">◀ VOLVER</button>
+  <h1>✍️ NIVEL 6: OPERACIONES CON STRINGS✍️</h1>
+
+  <div class="prueba">
+    <h2>📚¿QUÉ ES UN STRING?📚</h2>
+    <p class="texto-comparacion">
+      Un <strong>string</strong> es una palabra o frase que usamos en los programas. <br/><br/>
+      Se escribe siempre entre comillas.
+      Por ejemplo: <code>"Hola"</code>, <code>"Me llamo Leo"</code>, o <code>"123"</code><br/><br/>
+      Aunque aparezcan números, si estos están entre " ", será texto. Pero si un número se guarda sin comillas en una variable numérica (como int o double), será considerado número.
+    </p><br/>
+    <p  class="texto-comparacion">¡Podemos hacer muchas cosas con los strings! Como juntarlos, contar cuántas letras tienen o sacar solo una parte.</p>
+
+    <br /><br/><hr><br />
+
+    <h2>📝construye una frase con bloques📝</h2>
+    <p class="texto-comparacion">
+      Arrastra las piezas a los huecos grises para guardar en la variable <code>frase</code> el texto: <br/><code>"Hola Mundo"</code><br />
+    </p>
+  
+    <div
+      cdkDropList
+      id="disponiblesList"
+      [cdkDropListData]="bloquesDisponibles"
+      [cdkDropListConnectedTo]="idsHuecos"
+      class="bloques-disponibles"
+      (cdkDropListDropped)="dropEnDisponibles($event)"
+    >
+      <div
+        class="bloque"
+        *ngFor="let bloque of bloquesDisponibles"
+        cdkDrag
+        [cdkDragData]="bloque"
+      >
+        {{ bloque }}
+      </div>
+    </div>
+  
+    <div class="zona-construccion">
+      <div
+        class="hueco"
+        *ngFor="let hueco of bloquesSeleccionados; let i = index"
+        cdkDropList
+        [id]="idsHuecos[i]"
+        [cdkDropListData]="[bloquesSeleccionados[i]]"
+        [cdkDropListConnectedTo]="connectedDropLists"
+        (cdkDropListDropped)="dropEnHueco($event, i)"
+      >
+        <div
+          class="bloque"
+          *ngIf="bloquesSeleccionados[i]"
+          cdkDrag
+          [cdkDragData]="bloquesSeleccionados[i]"
+        >
+          {{ bloquesSeleccionados[i] }}
+        </div>
+      </div>
+    </div>
+  
+    <button class="btn-verificar" (click)="verificarBloques()" [disabled]="resuelto['concatenacion']">Verificar</button>
+    <p *ngIf="resuelto['concatenacion']">
+      <span *ngIf="correcto['concatenacion']">✅</span>
+      <span *ngIf="!correcto['concatenacion']">❌<br />Respuesta esperada: <code>string frase = "Hola" + "Mundo";</code></span>
+    </p>
+
+    <br /><br/><hr><br />
+
+    <h2>📝concatena usando variables📝</h2>
+    <p class="texto-comparacion">También podemos guardar strings en <strong>variables</strong> y luego unirlos:</p>
+    <div class="bloque-codigo">
+        <p>string saludo = "Hola";</p>
+        <p>string nombre = "Leo";</p>
+        <p>string frase = saludo + " " + nombre;</p>
+      </div>
+    <p class="texto-comparacion">¿Qué frase guarda la variable <code>"frase"</code> (sin comillas: " ")?</p>
+
+    <input type="text" [(ngModel)]="respuestas['concatVariables']" [disabled]="resuelto['concatVariables']" />
+    <button class="btn-verificar" (click)="verificar('concatVariables')" [disabled]="resuelto['concatVariables']">Verificar</button>
+    <p *ngIf="resuelto['concatVariables']">
+      <span *ngIf="correcto['concatVariables']">✅</span>
+      <span *ngIf="!correcto['concatVariables']">❌<br />Respuesta esperada: <code>{{ correctas['concatVariables'] }}</code></span>
+    </p>
+
+    <br /><br/><hr><br />
+
+    <h2>📝concatena números y textos📝</h2>
+    <p>❗ Si quieres unir un número con texto, primero debes <strong>convertir el número a string</strong>.</p>
+    <p class="texto-comparacion">Puedes usar la función <code>to_string()</code></p>
+    <p>Por ejemplo:</p>
+    <div class="bloque-codigo">
+      <p>int edad = 8;</p>
+      <p>string mensaje = to_string(edad) + " años";</p>
+    </div>
+    <p>¿Qué resultado obtienes? (sin comillas)</p>
+
+    <input type="text" [(ngModel)]="respuestas['sumaFinal']" [disabled]="resuelto['sumaFinal']" />
+    <button class="btn-verificar" (click)="verificar('sumaFinal')" [disabled]="resuelto['sumaFinal']">Verificar</button>
+    <p *ngIf="resuelto['sumaFinal']">
+      <span *ngIf="correcto['sumaFinal']">✅</span>
+      <span *ngIf="!correcto['sumaFinal']">❌<br />Respuesta esperada: <code>{{ correctas['sumaFinal'] }}</code></span>
+    </p>
+  </div>
+
+  <div class="prueba">
+    <h2>📚USO DEL COMANDO: <code>.length()📚</code></h2>
+    <p class="texto-comparacion">
+      En los programas, usamos <code>.length()</code> para saber cuántos caracteres tiene un string.
+      Por ejemplo:
+    </p>
+
+
+    <br /><br/><hr><br />
+
+    <h2>📝cuenta las letras letras📝</h2>
+    <p>Con los strings, podemos saber cuántos <strong>caracteres</strong> (letras, signos, espacios...) tiene una frase.</p>
+    <p>¡Las comillas que envuelven la frase, no se cuentan como caracteres!</p>
+    <p class="texto-comparacion"><code>"Hola!"</code> tiene... ¿cuántos caracteres? Escribe el número</p>
+
+    <input type="text" [(ngModel)]="respuestas['longitud']" [disabled]="resuelto['longitud']" />
+    <button class="btn-verificar" (click)="verificar('longitud')" [disabled]="resuelto['longitud']">Verificar</button>
+    <p *ngIf="resuelto['longitud']">
+      <span *ngIf="correcto['longitud']">✅</span>
+      <span *ngIf="!correcto['longitud']">❌<br />Respuesta esperada: <code>{{ correctas['longitud'] }}</code></span>
+    </p>
+
+    <br /><br/><hr><br />
+
+
+    <h2>📝¿cuántos caracteres se guardan en la variable <code>total</code>?📝</h2>
+
+    <div class="bloque-codigo">
+      <p>string palabra = "Casa";</p>
+      <p>int total = palabra.length();</p>
+    </div><br/>
+
+    <input type="text" [(ngModel)]="respuestas['lengthExtra']" [disabled]="resuelto['lengthExtra']" />
+    <button class="btn-verificar" (click)="verificar('lengthExtra')" [disabled]="resuelto['lengthExtra']">Verificar</button>
+    <p *ngIf="resuelto['lengthExtra']">
+      <span *ngIf="correcto['lengthExtra']">✅</span>
+      <span *ngIf="!correcto['lengthExtra']">❌<br />Respuesta esperada: <code>{{ correctas['lengthExtra'] }}</code></span>
+    </p>
+  </div>
+
+  <div class="prueba">
+    <h2>📚ACCESO A LETRAS📚</h2>
+    <p class="texto-comparacion">
+      Si <code>palabra = "Fruta"</code>, entonces <code>palabra[1]</code> te da la segunda letra.<br />
+      Recuerda: el primer número es el 0, el segundo es el 1, etc.
+    </p>
+
+    <br /><br/><hr><br />
+
+    <h2>📝¿cuál es la primera letra?📝</h2>
+    <p>Podemos mirar qué letra está en una posición usando los índices (empezando desde 0):</p>
+    <div class="bloque-codigo">
+      <p>string palabra = "Casa";</p>
+      <p>char letra = palabra[0];</p>
+    </div>
+    <p class="texto-comparacion">¿Qué letra aparece primero en <code>"Casa"</code>?</p>
+
+    <input type="text" maxlength="1" [(ngModel)]="respuestas['primerLetra']" [disabled]="resuelto['primerLetra']" />
+    <button class="btn-verificar" (click)="verificar('primerLetra')" [disabled]="resuelto['primerLetra']">Verificar</button>
+    <p *ngIf="resuelto['primerLetra']">
+      <span *ngIf="correcto['primerLetra']">✅</span>
+      <span *ngIf="!correcto['primerLetra']">❌<br />Respuesta esperada: <code>{{ correctas['primerLetra'] }}</code></span>
+    </p>
+
+    <br /><br/><hr><br />
+
+    <h2>📝¿qué letra está en la segunda posición de <code>"Fruta"</code>?📝</h2>
+    <p>(La segunda posición corresponde con el índice 1)</p>
+    <input type="text" maxlength="1" [(ngModel)]="respuestas['charAccess']" [disabled]="resuelto['charAccess']" />
+    <button class="btn-verificar" (click)="verificar('charAccess')" [disabled]="resuelto['charAccess']">Verificar</button>
+    <p *ngIf="resuelto['charAccess']">
+      <span *ngIf="correcto['charAccess']">✅</span>
+      <span *ngIf="!correcto['charAccess']">❌<br />Respuesta esperada: <code>{{ correctas['charAccess'] }}</code></span>
+    </p>
+    <p class="recuadro-ejemplo" *ngIf="resuelto['charAccess']">string palabra = "Fruta";<br/>string letra = palabra[1];</p>
+  </div>
+
+  <div class="prueba">
+    <h2>📝crea frases combinando valores📝</h2>
+    <p class="texto-comparacion">Podemos hacer frases uniendo varias palabras o números usando <code>+</code>.</p>
+    <p>Por ejemplo:</p>
+    <div class="bloque-codigo">
+      <p>string nombre = "Ana";</p>
+      <p>int edad = 8;</p>
+      <p>string frase = "Mi nombre es " + nombre + " y tengo " + to_string(edad) + " años.";</p>
+    </div>
+    <p>¿Cómo queda la frase final? (sin comillas)</p>
+
+    <input type="text" [(ngModel)]="respuestas['formateo']" [disabled]="resuelto['formateo']" />
+    <button class="btn-verificar" (click)="verificar('formateo')" [disabled]="resuelto['formateo']">Verificar</button>
+    <p *ngIf="resuelto['formateo']">
+      <span *ngIf="correcto['formateo']">✅</span>
+      <span *ngIf="!correcto['formateo']">❌</span>
+    </p>
+
+    <br /><br/><hr><br />
+
+    <h2>📝crea frases combinando valores</h2>
+    <p>Imagina que tenemos:</p>
+    <div class="bloque-codigo">
+      <p>string nombre = "Luis";</p>
+      <p>int edad = 10;</p>
+    </div>
+    <p class="texto-comparacion">
+      Usa los bloques para formar esta frase dentro de una variable: <br />
+      <code>"Soy Luis y tengo 10 años."</code><br />
+      👉 Pista: ¡recuerda usar el símbolo <code>+</code> para unir los bloques!
+    </p>
+    
+    <div
+      cdkDropList
+      id="formateoExtraList"
+      [cdkDropListData]="bloquesFormateoExtra"
+      [cdkDropListConnectedTo]="idsHuecosFormateoExtra"
+      class="bloques-disponibles"
+      (cdkDropListDropped)="dropEnFormateoExtra($event)"
+    >
+      <div
+        class="bloque"
+        *ngFor="let bloque of bloquesFormateoExtra"
+        cdkDrag
+        [cdkDragData]="bloque"
+      >
+        {{ bloque.texto }}
+      </div>
+    </div>
+    
+    <div class="zona-construccion">
+      <div
+        class="hueco"
+        *ngFor="let hueco of bloquesSeleccionadosFormateoExtra; let i = index"
+        cdkDropList
+        [id]="idsHuecosFormateoExtra[i]"
+        [cdkDropListData]="[bloquesSeleccionadosFormateoExtra[i]]"
+        [cdkDropListConnectedTo]="connectedDropLists"
+        (cdkDropListDropped)="dropEnHuecoFormateoExtra($event, i)"
+      >
+        <div
+          class="bloque"
+          *ngIf="bloquesSeleccionadosFormateoExtra[i]"
+          cdkDrag
+          [cdkDragData]="bloquesSeleccionadosFormateoExtra[i]"
+        >
+          {{ bloquesSeleccionadosFormateoExtra[i]?.texto }}
+        </div>
+      </div>
+    </div>
+    
+    <button class="btn-verificar" (click)="verificarFormateoExtra()" [disabled]="resuelto['formateoExtra']">Verificar</button>
+    <p *ngIf="resuelto['formateoExtra']">
+      <span *ngIf="correcto['formateoExtra']">✅</span>
+      <span *ngIf="!correcto['formateoExtra']">
+        ❌<br />
+        Respuesta esperada:
+        <code>"Soy" + " " + nombre + " y tengo " + edad + " años."</code>
+      </span>
+    </p>    
+    
+  </div>
+  <button class="btn-finish" (click)="finishLevel()" [disabled]="puedeFinalizar < puntos_maximos">Terminar Nivel</button>
+</div>

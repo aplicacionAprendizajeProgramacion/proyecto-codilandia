@@ -1,0 +1,157 @@
+<div class="nivel3-container">
+  <button class="volver" (click)="router.navigate(['/nivelesNinos'])">◀ VOLVER</button>
+
+  <h1>🖨️NIVEL 3: IMPRESIÓN Y VARIABLES🖨️</h1>
+
+  <div class="prueba">
+    <h2>📚¿QUÉ ES IMPRIMIR EN PANTALLA?📚</h2>
+    <p class="texto-comparacion">
+      En C++, usamos <code>cout</code> para mostrar cosas en pantalla.
+    </p>
+  
+    <br/>
+    <p>Todo lo que esté entre comillas ("...") se muestra como texto literal.</p>
+
+    <br/>
+    <p>Si quieres que el mensaje termine en una nueva línea, puedes añadir <code>&lt;&lt; endl;</code>.</p>
+  
+    <br/><br/><hr /><br/>
+
+    <p><strong>Por ejemplo:</strong></p>
+    <div class="bloque-codigo">
+      <p>cout &lt;&lt; "Hola";</p>
+      <p>cout &lt;&lt; "mundo";</p>
+    </div>
+    <p class="texto-comparacion">🟡 Esto mostrará: <code>Holamundo</code></p>
+  
+    <br/><br/>
+    <div class="bloque-codigo">
+      <p>cout &lt;&lt; "Hola" &lt;&lt; endl;</p>
+      <p>cout &lt;&lt; "mundo";</p>
+    </div>
+    <p class="texto-comparacion">🟢 Esto mostrará:<br />
+      <code>Hola</code><br />
+      <code>mundo</code>
+    </p>
+  </div>
+
+  <div class="prueba">
+    <h2>📝 Mostrar un mensaje 📝</h2>
+    <p>Escribe un mensaje para mostrar en pantalla. Debe ir entre comillas dobles " ".</p>
+    <input type="text" [(ngModel)]="frase1" [disabled]="resueltos.frase1" />
+    <button class="btn-verificar" (click)="verificarFrase1()" [disabled]="resueltos.frase1">Verificar</button><br />
+    <div class="consola-mockup" *ngIf="frase1.trim().length > 0">
+      <div class="pantalla">{{ frase1 }}</div>
+    </div>
+    <br/>
+    <p class="recuadro-ejemplo" *ngIf="resueltos.frase1">
+      <span *ngIf="correctos.frase1"><code>cout &lt;&lt; {{ frase1 }} &lt;&lt; endl;</code></span>
+      <span *ngIf="!correctos.frase1">❌</span>
+    </p>
+  </div>
+
+  <div class="prueba">
+    <h2>📝 Saludo sin salto de línea 📝</h2>
+    <p><strong>Muestra: <code>Hola Juan!</code> </strong><br/> No uses el salto de línea:</p>
+    <input type="text" [(ngModel)]="saludo_sin_endl" [disabled]="resueltos.saludo_sin_endl" />
+    <button class="btn-verificar" (click)="verificarSaludoSinEndl()" [disabled]="resueltos.saludo_sin_endl">Verificar</button>
+    <br/>
+    <p *ngIf="resueltos.saludo_sin_endl">
+      <span *ngIf="correctos.saludo_sin_endl">✅<br/></span>
+      <span *ngIf="!correctos.saludo_sin_endl">❌<br/></span>
+    </p>
+    <p class="recuadro-ejemplo" *ngIf="resueltos.saludo_sin_endl"><br/><code>cout << "Hola Juan!";</code></p>
+  </div>
+  
+  <div class="prueba">
+    <h2>📝 Saludo con salto de línea 📝</h2>
+    <p><strong>Muestra: <code>Hola Juan!</code></strong><br/> Usa el salto de línea:</p>
+    <input type="text" [(ngModel)]="saludo_con_endl" [disabled]="resueltos.saludo_con_endl" />
+    <button class="btn-verificar" (click)="verificarSaludoConEndl()" [disabled]="resueltos.saludo_con_endl">Verificar</button>
+    <br/>
+    <p *ngIf="resueltos.saludo_con_endl">
+      <span *ngIf="correctos.saludo_con_endl">✅<br/></span>
+      <span *ngIf="!correctos.saludo_con_endl">❌<br/></span>
+    </p>
+    <p class="recuadro-ejemplo" *ngIf="resueltos.saludo_con_endl"><br/><code>cout << "Hola Juan!" << endl;</code></p>
+  </div>
+
+  <div class="prueba">
+    <h2>📚 IMPRIMIR VARIABLES 📚</h2>
+    <p>Puedes usar <code>cout</code> para imprimir también variables.</p>
+    <p>❗ Las variables no van entre comillas ❗</p>
+
+    <!-- INT -->
+    <p><strong>📝 variable int</strong><br /><code>int edad = 10;</code></p>
+    <input type="text" [(ngModel)]="var_int" [disabled]="resueltos.int" />
+    <button class="btn-verificar" (click)="verificarVar('int')" [disabled]="resueltos.int">Verificar</button>
+    <br/>
+    <div *ngIf="resueltos.int && correctos.int" class="consola-mockup">
+      <div class="pantalla">
+         >> 10
+        <br *ngIf="conSalto.int" />
+        <span *ngIf="conSalto.int">>></span>
+      </div>
+    </div>
+
+    <p *ngIf="resueltos.int">
+      <span *ngIf="correctos.int">✅</span>
+      <span *ngIf="!correctos.int">❌</span>
+    </p>
+
+    <!-- DOUBLE -->
+    <p><strong>📝 variable double</strong><br /><code>double altura = 1.75;</code></p>
+    <input type="text" [(ngModel)]="var_double" [disabled]="resueltos.double" />
+    <button class="btn-verificar" (click)="verificarVar('double')" [disabled]="resueltos.double">Verificar</button>
+    <br/>
+    <div *ngIf="resueltos.double && correctos.double" class="consola-mockup">
+      <div class="pantalla">
+         >> 1.75
+        <br *ngIf="conSalto.double" />
+        <span *ngIf="conSalto.double">>></span>
+      </div>
+    </div>
+
+    <p *ngIf="resueltos.double">
+      <span *ngIf="correctos.double">✅</span>
+      <span *ngIf="!correctos.double">❌</span>
+    </p>
+
+    <!-- BOOL -->
+    <p><strong>📝 variable bool</strong><br /><code>bool feliz = true;</code></p>
+    <input type="text" [(ngModel)]="var_bool" [disabled]="resueltos.bool" />
+    <button class="btn-verificar" (click)="verificarVar('bool')" [disabled]="resueltos.bool">Verificar</button>
+    <br/>
+    <div *ngIf="resueltos.bool && correctos.bool" class="consola-mockup">
+      <div class="pantalla">
+         >> true
+        <br *ngIf="conSalto.bool" />
+        <span *ngIf="conSalto.bool">>></span>
+      </div>
+    </div>
+
+    <p *ngIf="resueltos.bool">
+      <span *ngIf="correctos.bool">✅</span>
+      <span *ngIf="!correctos.bool">❌</span>
+    </p>
+
+    <p><strong>📝 variable string</strong><br /><code>string nombre = "Sofia";</code></p>
+    <input type="text" [(ngModel)]="var_string" [disabled]="resueltos.string" />
+    <button class="btn-verificar" (click)="verificarVar('string')" [disabled]="resueltos.string">Verificar</button>
+    <br/>
+    <div *ngIf="resueltos.string && correctos.string" class="consola-mockup">
+      <div class="pantalla">
+         >> Sofia
+        <br *ngIf="conSalto.string" />
+        <span *ngIf="conSalto.string">>></span>
+      </div>
+    </div>
+
+    <p *ngIf="resueltos.string">
+      <span *ngIf="correctos.string">✅</span>
+      <span *ngIf="!correctos.string">❌</span>
+    </p>
+    <br/>
+
+  <button class="btn-finish" (click)="finishLevel()" [disabled]="!puedeFinalizar">Terminar Nivel</button>
+</div>

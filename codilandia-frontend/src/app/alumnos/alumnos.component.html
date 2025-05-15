@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+
+    <img src="logo.png" alt="Logo de Codilandia" class="logo" />
+    <button class="volver" (click)="volver()">◀ VOLVER</button>
+    <div class="modal-overlay" *ngIf="isLoading">
+        <div class="spinner-modal">
+          <div class="spinner"></div>
+        </div>
+      </div> 
+    <h1 class="titulo">{{ nombre_usuario }} | {{ curso?.nombre_aula }} | Alumnos</h1>
+    
+    <div class="alumnos-container">
+        <div class="alumno"  *ngFor="let alumno of alumnos">
+            <p>{{alumno?.nombre_nino}}</p>
+            <button class="btn eliminar" (click)="eliminar(alumno)">Expulsar</button>
+        </div>
+    </div>
+    <p *ngIf="alumnos.length == 0">No hay alumnos por el momento.</p>
+</html>

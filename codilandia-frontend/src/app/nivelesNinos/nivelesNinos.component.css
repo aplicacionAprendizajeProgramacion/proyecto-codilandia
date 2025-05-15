@@ -1,0 +1,230 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif; 
+    background-color: #b8d9f0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.volver {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: none;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+    font-weight: 600;
+  }
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 7.5px 0;
+    margin-bottom: 0px;
+  }
+  
+.niveles-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #b3d9ff;
+    padding: 20px;
+    height: 100vh;
+    justify-content: flex-start;
+    text-align: center;
+}
+
+.dos-columnas-grid {
+  display: grid;
+  grid-template-columns: 2fr 1.2fr; /* ajusta proporciones a tu gusto */
+  gap: 40px;                        /* espacio entre columnas */
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 0px;                 /* separación tras el título */
+  align-items: center;     
+}
+
+.logo {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 150px;
+  height: auto;
+}
+  
+  h1 {
+    font-size: 2.5rem;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+    margin-bottom: 20px;
+  }
+
+  .titulillo {
+    font-size: 1.25rem;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+  }
+
+/* Contenedor de estrellas: grid responsive */
+.estrella-container {
+  display: flex;
+  flex-wrap: wrap;               /* permite varias filas */
+  justify-content: center;       /* centra cada fila */
+  gap: 30px;                     /* espacio entre items */
+  margin-bottom: 20px;
+  padding: 0 20px;               /* opcional, relleno horizontal */
+  box-sizing: border-box;
+}
+
+/* Cada “tarjeta” de estrella */
+.estrella-item {
+  flex: 0 0 145px;               /* ancho fijo, sin crecer ni encoger */
+  height: 215px;                 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  transition: transform 0.3s ease;
+}
+
+.estrella-item:hover:not(.disabled) {
+  transform: scale(1.2);
+}
+
+/* Imagen de la estrella */
+.estrella {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.estrella-img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* Número sobre la estrella */
+.estrella-num {
+  position: absolute;
+  font-size: 1.5rem;
+  color: #000;
+  font-weight: bold;
+}
+
+/* Estado deshabilitado */
+.estrella-item.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Título de cada nivel */
+.estrella-titulo {
+  width: 140px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3px;
+  padding: 4px 8px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border: 2px solid #333;
+  border-radius: 6px;
+  background-color: #fff;
+  color: #333;
+  text-align: center;
+}
+
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); 
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(2px); 
+}
+
+.spinner-modal {
+  background: transparent;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.spinner {
+  border: 4px solid rgba(255, 255, 255, 0.3); 
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.niveles-grid {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr;
+  gap: 40px;
+  padding: 20px;
+  align-items: start;
+}
+
+.col-izq {
+  background: #b3d9ff;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.col-der {
+  padding: 20px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;   /* centra verticalmente dentro de la celda del grid */
+  justify-content: center;
+  height: 100%;
+  display: flex;
+}
+
+.stats-box h2 {
+  margin-top: 0;
+}
+
+.stats-box {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 350px; /* opcional, para poner un tope */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.notas-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+.notas-table th, .notas-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}

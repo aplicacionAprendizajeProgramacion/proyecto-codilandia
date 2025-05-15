@@ -1,0 +1,44 @@
+<div class="profesor-container">
+  <button class="volver" (click)="volver()">◀ VOLVER</button>
+    <h1 class="titulo">{{nombre_usuario}}</h1>
+    <div class="modal-overlay" *ngIf="isLoading">
+      <div class="spinner-modal">
+        <div class="spinner"></div>
+      </div>
+    </div> 
+    <div class="cursos-box">
+      <h2><i class="bi bi-people-fill"></i> MIS CURSOS </h2>
+      
+      <div class="cursos-grid">
+        <button class="curso-btn" *ngFor="let curso of cursos" (click)="clase(curso.codigo_aula)">
+          {{ curso.nombre_aula }}
+        </button>
+      </div>
+      
+  
+    </div>
+    <button class="crear-btn" (click)="openCreateRoomModal()">CREAR NUEVO CURSO</button>
+    <div class="popup-overlay" *ngIf="isCreateRoomModalOpen">
+      <div class="join-group-modal">
+        <h3>Crear Aula</h3>
+
+        <label for="nombreAula">Nombre del aula:</label>
+        <input
+          id="nombreAula"
+          type="text"
+          [(ngModel)]="nombreAula"
+          name="nombreAula"
+          placeholder="Ingrese el nombre del Aula"
+          required
+        />
+        
+        <button class="btn-submit" (click)="CreateAula()">Crear</button>
+        
+        <button class="btn-submit" (click)="closeCreateRoomModal()">Cancelar</button>
+
+      </div>
+    </div>
+    <img src="logo.png" alt="Logo de Codilandia" class="logo" />
+</div>
+
+  

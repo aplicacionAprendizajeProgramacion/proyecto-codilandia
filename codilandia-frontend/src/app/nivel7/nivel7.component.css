@@ -1,0 +1,360 @@
+.nivel7-container {
+  max-width: 1250px;
+  margin: auto;
+  padding: 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  background-color: #fffbea;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 3em;
+}
+
+h2 {
+  color: #6b4f18;
+  font-size: 2em;
+}
+
+h3 {
+  font-size: 1em;
+  font-weight: normal;
+  margin-bottom: 40px;
+  margin-top: 30px;
+}
+
+.prueba {
+  background: #fff6dc;
+  border: 1px solid #e0cf9f;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 30px;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin: 8px 0;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"] {
+  padding: 10px;
+  font-size: 1.5rem;
+  margin: 10px 0;
+  width: 80%;
+  max-width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.volver {
+  display: block;
+  border: none;
+  padding: 10px 16px;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  background-color: transparent;
+  color: #000000;
+  font-weight: 600;
+  font-size: 1em;
+  text-align: left !important;
+}
+
+.btn-finish {
+  padding: 15px 30px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 40px;
+}
+
+.btn-finish:hover {
+  background-color: #45a049;
+}
+
+.btn-verificar {
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1.5rem;
+  border-radius: 8px;
+  margin: 10px 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.btn-verificar:hover {
+  background-color: #0b7dda;
+}
+
+
+.recuadro-ejemplo {
+  border: 3px solid #ff8c00; 
+  background-color: #fff3e6; 
+  border-radius: 12px;
+  padding: 10px 15px;
+  font-size: 1.5rem;
+  display: inline-flex; 
+  align-items: center;
+  gap: 8px;
+  margin: 15px auto;
+  text-align: left;
+  box-shadow: 2px 2px 5px rgba(255, 140, 0, 0.1);
+}
+
+.recuadro-ejemplo .icono {
+  font-size: 1.4rem;
+}
+
+.recuadro-ejemplo code {
+  font-family: Consolas, 'Courier New', monospace;
+  color: #c14400;
+  font-weight: 600;
+}
+
+.bloque-codigo {
+  display: inline-block;
+  background-color: #f5f5f5;
+  color: #1a1a1a;
+  padding: 10px 15px;
+  border-radius: 10px;
+  font-family: 'Courier New', monospace;
+  font-size: 1.5rem;
+  text-align: left;
+  margin-bottom: 10px;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+}
+  
+.bloque-codigo p {
+  margin: 0;
+  white-space: nowrap;
+}
+  
+.texto-comparacion {
+  font-size: 1.5rem;
+  margin: 10px 0;
+}
+  
+.texto-comparacion code {
+  background-color: #fff3e6;
+  padding: 4px 8px;
+  border-radius: 6px;
+  color: #c14400;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.lista-operadores {
+  margin-top: 15px;
+  background-color: #fff9e6;
+  border: 2px dashed #e0cf9f;
+  padding: 15px 20px;
+  border-radius: 12px;
+  display: inline-block;
+  text-align: left;
+  font-size: 1.5rem;
+}
+  
+.lista-operadores ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+  
+.lista-operadores li {
+  margin-bottom: 6px;
+}
+  
+.lista-operadores code {
+  background-color: #fce4ba;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  color: #b35e00;
+}
+
+/*-------------------------------------*/
+
+    
+  .nota {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    width: 400px;
+    height: auto;
+  }
+  
+  .comentario {
+    width: 100%;
+    height: auto;
+    z-index: 1;
+  }
+
+  .hueco {
+    border: 2px dashed #ccc;
+    min-height: 30px;
+    margin-left: 10px;
+    padding: 5px;
+    width: 400px;
+    background-color: #f9f9f9;
+  }
+  
+  .comentarios {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    gap: 30px;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+
+  .com1{
+    gap: 26.5px
+  }
+
+  .sp{
+    margin-top: 30px;
+    margin-bottom: 40px;
+  }
+
+  .comentario-code {
+    color: #006400; 
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    font-size: 0.9em;
+    user-select: none;
+    cursor: grab;
+  }
+
+  .cdk-drag-preview {
+    cursor: grabbing;
+  }
+
+  
+  
+  .consola-mockup {
+    margin-top: 20px;
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: black;
+    border-radius: 12px;
+    min-width: 10px;
+    max-width: 100%;
+    overflow-x: auto;
+    text-align: center;
+  }
+  
+  .pantalla {
+    color: #00FF00; /* Verde fosforito */
+    font-family: 'Courier New', monospace;
+    font-size: 2rem; /* 🔍 MÁS GRANDE */
+    font-weight: bold;
+    text-shadow: 1px 1px 2px black; /* borde negro sutil */
+    white-space: nowrap;
+  }
+
+  .lista-opciones {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 10px 0;
+    align-items: center;
+  }
+  
+  .opcion {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+  }
+
+  .opcion input[type="radio"] {
+    transform: scale(1.5); 
+    margin-right: 8px; 
+    cursor: pointer;
+  }
+  
+  
+  .row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .col {
+    flex: 1;
+    max-width: 50%;
+  }
+
+  .linea-codigo {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.linea-codigo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+  padding-right: 10px;
+}
+
+.linea-codigo code {
+  width: 60%;
+  font-family: 'Courier New', monospace;
+  font-size: 16px;
+}
+
+.hueco-comentario {
+  width: 35%;
+  min-height: 40px;
+  background-color: #f0f8ff;
+  border: 2px dashed #aaa;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  transition: background-color 0.3s ease;
+}
+
+.hueco-comentario.cdk-drop-list-dragging {
+  background-color: #e0ebff;
+}
+
+.comentario-code1 {
+  background-color: #dbeaff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-family: 'Courier New', monospace;
+  font-size: 20px;
+  margin: 5px 0;
+  cursor: move;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.comentarios {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}

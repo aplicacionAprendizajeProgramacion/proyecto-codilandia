@@ -1,0 +1,165 @@
+<div class="nivel2-container">
+  <button class="volver" (click)="router.navigate(['/nivelesNinos'])">◀ VOLVER</button>
+
+  <h1>🔣NIVEL 2: VARIABLES Y TIPOS DE DATOS🔣</h1>
+
+  <div class="prueba">
+    <h2>📚¿QUÉ ES UNA VARIABLE?📚</h2>
+    <p>
+        Una <strong>variable</strong> es como una cajita donde guardamos información en un programa. Le damos un nombre, y dentro metemos un valor.
+        Las variables se usan mucho para que el ordenador recuerde datos como números, frases, o si algo es verdadero o falso.
+    </p>
+    <p>
+        ✍️ En programación, las variables se escriben así:<br />
+    </p>
+    <p class="recuadro-ejemplo"><code><strong>tipo nombre_variable = valor;</strong></code></p>
+    <p>
+        Es importante que el nombre de una variable represente lo que se quiere guardar (porque así es más fácil recordar luego😉).<br/> <br/>Además, para crear el nombre de una variable, es importante no poner espacios, si se quiere poner más de una palabra, se puede poner uniéndolo con guiones como: platos_arroz.<br /><br />
+
+        Una variable siempre debe terminar en ";" al declararse (que es la forma en la que se da valor a una variable).<br /><br />
+        Por ejemplo: <code>int edad = 9;</code>
+    </p>
+  </div>
+
+  <div class="prueba">
+    <h2>📚ENTERO📚</h2>
+    <p><strong>¿Qué es un entero?</strong> <br /><br /> Es un número sin decimales, como 1, 2, 3... ¡como contar manzanas!</p>
+    <p><em>Ejemplo:</em> Si escribes 4, verás 4 manzanas aparecer 🍎🍎🍎🍎</p> <br />
+    
+    <br/><hr /><br/>
+
+    <p><strong>Escribe un número del 1 al 10. Mostraremos tantas manzanas como número elijas.</strong></p>
+    <p class="recuadro-ejemplo"><em><strong>✏️ Así lo escribimos: </strong></em> <code>int numero_manzanas</code></p><br />
+    <input type="number" [(ngModel)]="numeroManzanas" min="1" max="10" />
+    <div class="manzanas">
+      <img *ngFor="let m of [].constructor(numeroManzanas)" src="manzana.png" alt="manzana" />
+    </div>
+    <button class="btn-verificar" (click)="verificarEntero()" [disabled]="resueltoEntero">Guardar</button>
+    <p *ngIf="resueltoEntero">
+        <span *ngIf="esEnteroCorrecto">✅</span>
+        <span *ngIf="!esEnteroCorrecto">❌</span>
+        <code>int numero_manzanas = {{ numeroManzanas }};</code>
+    </p>  
+    <hr style="margin: 30px 0;" />
+  
+    <p>¡Mira esta imagen!</p>
+    <div class="manzanas">
+      <img src="platano.png" alt="plátano" />
+      <img src="platano.png" alt="plátano" />
+      <img src="platano.png" alt="plátano" />
+      <img src="platano.png" alt="plátano" />
+    </div>
+    
+    <p><strong>📝¿cómo declararías esa variable en código para guardar el número de platos que se muestran en la imagen?📝</strong></p>
+    <p>(el nombre de la variable debe ser "numero_bananas")</p>
+    <input type="text" [(ngModel)]="respuestaPlatanos" [disabled]="resueltoPlatanos" />
+    <button class="btn-verificar" (click)="verificarPlatanos()" [disabled]="resueltoPlatanos">Comprobar</button>
+    
+    <p *ngIf="resueltoPlatanos">
+      <span *ngIf="respuestaPlatanosCorrecta">✅</span>
+      <span *ngIf="!respuestaPlatanosCorrecta">❌</span>
+      <code>int numero_bananas = 4;</code>
+    </p>
+  </div>
+  
+  <div class="prueba">
+    <h2>📚DOUBLE (REAL)📚</h2>
+    <p><strong>¿Qué es un número real?</strong> <br /><br /> Es un número que puede tener decimales, como 1.50 o 2.55</p>
+    <p><em>Ejemplo:</em> Si usas una moneda de 2 €, otra de 1 € y una de 50 céntimos (0.50 €), juntas hacen 3.50 €.</p> <br />
+    
+    <br/><hr /><br/>
+
+    <p><strong>📝selecciona (pulsando) monedas para sumar 2,55 € :📝</strong></p>
+    <p class="recuadro-ejemplo"><em><strong>✏️ Así lo escribimos: </strong></em><code>double monedas</code></p><br />
+    <div class="monedas">
+        <button class="btn-moneda" *ngFor="let m of listaMonedas" (click)="agregarMoneda(m)" [disabled]="resueltoReal">
+        {{ m }} €
+        </button>
+    </div>
+    <div class="monedas-seleccionadas">
+      <div class="moneda-imagen" *ngFor="let valor of monedasSeleccionadas; let i = index">
+        <img [src]="getImagenMoneda(valor)" [alt]="valor + ' €'" />
+        <span class="eliminar" (click)="eliminarMoneda(i)">✖</span>
+      </div>
+    </div>
+    <p>Total: <strong>{{ sumaMonedas.toFixed(2) }} €</strong></p>
+    <button class="btn-verificar" (click)="verificarReal()" [disabled]="resueltoReal">Comprobar</button>
+    <p *ngIf="resueltoReal">
+        <span *ngIf="esRealCorrecto">✅</span>
+        <span *ngIf="!esRealCorrecto">❌</span>
+        <code>double monedas = {{ sumaMonedas.toFixed(2) }};</code>
+    </p>
+  </div>
+
+  <div class="prueba">
+    <h2>📚BOOLEANO📚</h2>
+    <p><strong>¿Qué es un booleano?</strong><br /><br />
+      Es una variable que solo puede tener dos valores: <code>true</code> (verdadero) o <code>false</code> (falso).
+    </p>
+    <p><em>Ejemplo:</em> ¿Hoy he desayunado? Si sí, entonces es <code>true</code>, si no, es <code>false</code>.</p>
+    <p class="recuadro-ejemplo"><em><strong>✏️ Así lo escribimos: </strong></em><code>bool he_desayunado = true;</code></p>
+  
+    <br/><br/><hr /><br/>
+  
+    <img src="pastel.png" alt="pastel" class="imagen-pastel" />
+    <p><strong>📝¿hay un pastel?📝</strong></p>
+    <button class="btn-true" (click)="verificarBooleano(true, 'pastel')" [disabled]="resueltoPastel">TRUE</button>
+    <button class="btn-false" (click)="verificarBooleano(false, 'pastel')" [disabled]="resueltoPastel">FALSE</button>
+    <p *ngIf="resueltoPastel">
+        <span *ngIf="respuestaPastelCorrecta">✅</span>
+        <span *ngIf="!respuestaPastelCorrecta">❌</span>
+        <code>bool hay_pastel = true;</code>
+    </p>  
+    <br /><hr><br />
+  
+    <img src="pastel_porciones.png" alt="pastel dividido" class="imagen-pastel" />
+    <p><strong>📝¿hay tres trozos de pastel?📝</strong></p>
+    <button class="btn-true" (click)="verificarBooleano(true, 'porciones')" [disabled]="resueltoPorciones">TRUE</button>
+    <button class="btn-false" (click)="verificarBooleano(false, 'porciones')" [disabled]="resueltoPorciones">FALSE</button>
+    <p *ngIf="resueltoPorciones">
+        <span *ngIf="respuestaPorcionesCorrecta">✅</span>
+        <span *ngIf="!respuestaPorcionesCorrecta">❌</span>
+        <code>bool hay_tres_trozos = false;</code>
+    </p>
+  </div>
+  
+  <div class="prueba">
+    <h2>📚STRING📚</h2>
+    <p><strong>¿Qué es un string?</strong><br /><br />
+      Es un tipo de variable que se usa para guardar palabras o frases. Como cuando escribes tu nombre o una historia.
+    </p>
+    <p><em>Ejemplo: </em> <code>"Hola, me llamo Leo"</code></p>
+    <p class="recuadro-ejemplo"><em><strong>✏️ Así lo escribimos: </strong></em> <code>string texto</code></p><br />
+  
+    <br/><hr /><br/>
+
+    <p><strong>📝escribe tu frase favorita (sin comillas: " "):📝</strong></p>
+    <input type="text" [(ngModel)]="textoUsuario" [disabled]="resueltoString" />
+    <button class="btn-verificar" (click)="verificarString()" [disabled]="resueltoString">Guardar</button>
+    <p *ngIf="resueltoString">
+        <span *ngIf="esStringCorrecto"><strong>Se declararía así:<br/><p class="recuadro-ejemplo"><code>string texto = "{{ textoUsuario }}";</code></p></strong></span>
+        <span *ngIf="!esStringCorrecto">❌</span>
+    </p>  
+
+    <br/><hr /><br/>
+  
+    <p><strong>📝escribe esta frase exactamente:📝</strong></p>
+    <p><em>Tres tristes tigres comían trigo en un trigal</em></p>
+    <p>(el nombre de la variable debe ser "frase")</p>
+    <p class="recuadro-ejemplo"><em><strong>✏️ Así lo escribimos: </strong></em><code>string frase = "...";</code></p><br />
+    <input type="text" [(ngModel)]="fraseUsuario" [disabled]="resueltoFrase" />
+    <button class="btn-verificar" (click)="verificarFrase()" [disabled]="resueltoFrase">Comprobar</button>
+  
+    <div *ngIf="resueltoFrase">
+        <p>
+          <span *ngIf="fraseCorrecta">✅</span>
+          <span *ngIf="!fraseCorrecta">❌</span>
+          <code>string frase = "Tres tristes tigres comían trigo en un trigal";</code>
+        </p>
+        <img *ngIf="fraseCorrecta" src="tigre_contento.png" class="img-tigre-mini" />
+        <img *ngIf="!fraseCorrecta" src="tigre_triste.png" class="img-tigre-mini" />        
+    </div>
+  </div>
+   
+  <button class="btn-finish" (click)="finishLevel()" >Terminar Nivel</button>
+</div>

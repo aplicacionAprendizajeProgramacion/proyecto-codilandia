@@ -1,0 +1,103 @@
+<div class="screen-container">
+  <button class="volver" (click)="volver()">◀ VOLVER</button>
+
+  <img src="logo.png" alt="Logo de Codilandia" class="logo" />
+
+  <div class="modal-overlay" *ngIf="isLoading">
+    <div class="spinner-modal">
+      <div class="spinner"></div>
+    </div>
+  </div>
+
+  <div class="registro-container">
+    <h1>INICIAR SESIÓN</h1>
+
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+    <form (ngSubmit)="onSubmit()">
+      <label for="correo">CORREO ELECTRÓNICO</label>
+      <input
+        id="correo"
+        type="text"
+        [(ngModel)]="correo_usuario"
+        name="correo_usuario"
+        required
+      />
+    
+      <label for="nombre">NOMBRE DE USUARIO</label>
+      <input
+        id="nombre"
+        type="text"
+        [(ngModel)]="nombre_usuario"
+        name="nombre_usuario"
+        required
+      />
+    
+      <label for="contrasena">CONTRASEÑA</label>
+      <input
+        id="contrasena"
+        type="password"
+        [(ngModel)]="contrasena"
+        name="contrasena"
+        required
+      />
+    
+      <button class="btn-submit" type="submit" [disabled]="isLoading">
+        Iniciar sesión
+      </button>
+    </form>
+
+    <div class="forgot-password">
+      <a (click)="openPasswordResetModal()">¿Has olvidado tu contraseña?</a>
+    </div>
+
+    <div class="register-link">
+      <button class="btn-register" (click)="navigateToRegister()">Registrarse</button>
+    </div>
+  </div>
+
+  <div class="popup-overlay" *ngIf="isResetPasswordModalOpen">
+    <div class="reset-password-modal">
+      <h3>Recuperar Contraseña</h3>
+
+      <div class="email-input-group">
+        <input
+          type="email"
+          [(ngModel)]="resetCorreo"
+          placeholder="Ingrese su correo electrónico"
+          name="resetCorreo"
+        >
+        <button 
+          class="btn-accept"
+          (click)="fetchUsernames()"
+          [disabled]="!resetCorreo"
+        >✔</button>
+      </div>
+
+      <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+      <div *ngIf="usernames.length > 0" class="usernames-container">
+        <p>Seleccione su nombre de usuario:</p>
+        <div 
+          *ngFor="let username of usernames"
+          class="username-option"
+          [class.selected]="selectedPerfil === username"
+          (click)="selectedPerfil = username"
+        >
+          {{ username }}
+        </div>
+      </div>
+
+      <div class="modal-buttons">
+        <button 
+          class="btn-submit"
+          (click)="sendResetEmail()"
+          [disabled]="!selectedPerfil || isLoading"
+        >
+          {{ isLoading ? 'Enviando...' : 'Enviar correo' }}
+        </button>
+        <button class="btn-submit" (click)="closePasswordResetModal()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>

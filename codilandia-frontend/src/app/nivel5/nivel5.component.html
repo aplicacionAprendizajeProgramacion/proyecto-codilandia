@@ -1,0 +1,279 @@
+<div class="nivel5-container">
+    <button class="volver" (click)="router.navigate(['/nivelesNinos'])">◀ VOLVER</button>
+    <h1>🔍NIVEL 5: COMPARACIONES Y OPERADORES 🔍</h1>
+  
+    <div class="prueba">
+      <h2>📚¿QUÉ ES UN OPERADOR DE COMPARACIÓN?📚</h2>
+      <p>
+          Los usamos para comparar cosas. Por ejemplo, si tienes más manzanas que tu amigo 
+          <img src="manzana.png" class="img-inline" />
+          <img src="manzana.png" class="img-inline" />
+          <img src="manzana.png" class="img-inline" />
+          > 
+          <img src="manzana.png" class="img-inline" />, 
+          ¡puedes decir que tienes más!
+      </p>
+
+      <div class="lista-operadores">
+          <h4>🔎 Tipos de operadores:</h4>
+          <ul>
+          <li><code>&gt;</code> Mayor que</li>
+          <li><code>&lt;</code> Menor que</li>
+          <li><code>&gt;=</code> Mayor o igual que</li>
+          <li><code>&lt;=</code> Menor o igual que</li>
+          <li><code>==</code> Igual que</li>
+          <li><code>!=</code> Distinto de</li>
+          </ul>
+      </div><br/>
+
+      <div class="recuadro-ejemplo">
+          <div>
+          <p class="texto-comparacion"><strong>¡En programación, nunca uses solo <code>=</code> para comparar!</strong></p>
+          <p class="texto-comparacion"><code>int resultado = 5;</code> ✅ → Esto guarda un valor.</p>
+          <p class="texto-comparacion"><code>resultado == 5</code> ✅ → Esto compara.</p>
+          </div>
+      </div>
+
+      <br /><br/><hr><br />
+
+      <h2>📝¿quién tiene más manzanas?📝</h2>
+      <div class="comparacion">
+        <div class="imagen-resultado">
+          <img *ngFor="let m of [].constructor(3)" src="manzana.png" class="icono-img" />
+        </div>
+        <div class="opciones-operador">
+          <button (click)="verificarComparacion('>','manzanas1')" [disabled]="resueltos.manzanas1">&gt;</button>
+          <button (click)="verificarComparacion('==','manzanas1')" [disabled]="resueltos.manzanas1">==</button>
+          <button (click)="verificarComparacion('&lt;','manzanas1')" [disabled]="resueltos.manzanas1">&lt;</button>
+        </div>
+        <div class="imagen-resultado">
+          <img *ngFor="let m of [].constructor(1)" src="manzana.png" class="icono-img" />
+        </div>
+      </div>
+      <p *ngIf="resueltos.manzanas1">
+        <span *ngIf="correctos.manzanas1">✅</span>
+        <span *ngIf="!correctos.manzanas1">❌</span>
+      </p>
+      <div class="recuadro-ejemplo" *ngIf="resueltos.manzanas1">
+        <p class="texto-comparacion"><code>int manzanas1 = 3;<br/><br/>  int manzanas2 = 1;<br/><br/><strong>manzanas1 > manzanas2</strong></code></p>
+      </div>
+      <br /><br />
+
+      <h2>📝¿hay el mismo número de vacas?📝</h2>
+      <div class="comparacion">
+        <div class="imagen-resultado">
+          <img *ngFor="let v of [].constructor(2)" src="vaca.png" class="icono-img" />
+        </div>
+        <div class="opciones-operador">
+          <button (click)="verificarComparacion('&gt;','vacas1')" [disabled]="resueltos.vacas1">&gt;</button>
+          <button (click)="verificarComparacion('==','vacas1')" [disabled]="resueltos.vacas1">==</button>
+          <button (click)="verificarComparacion('&lt;','vacas1')" [disabled]="resueltos.vacas1">&lt;</button>
+        </div>
+        <div class="imagen-resultado">
+          <img *ngFor="let v of [].constructor(2)" src="vaca.png" class="icono-img" />
+        </div>
+      </div>
+      <p *ngIf="resueltos.vacas1">
+        <span *ngIf="correctos.vacas1">✅</span>
+        <span *ngIf="!correctos.vacas1">❌</span>
+      </p>
+      <div class="recuadro-ejemplo" *ngIf="resueltos.vacas1">
+        <p class="texto-comparacion"><code>int vacas1 = 2;<br/><br/>int vacas2 = 1;<br/><br/><strong>vacas1 == vacas2</strong></code></p>
+      </div>
+
+      <br /><br />
+
+      <h2>📝¿hay menos trozos de tarta?📝</h2>
+      <div class="comparacion">
+        <div class="imagen-resultado">
+          <img *ngFor="let t of [].constructor(2)" src="trozo_pastel.png" class="icono-img" />
+        </div>
+        <div class="opciones-operador">
+          <button (click)="verificarComparacion('&gt;','pastel1')" [disabled]="resueltos.pastel1">&gt;</button>
+          <button (click)="verificarComparacion('==','pastel1')" [disabled]="resueltos.pastel1">==</button>
+          <button (click)="verificarComparacion('&lt;','pastel1')" [disabled]="resueltos.pastel1">&lt;</button>
+        </div>
+        <div class="imagen-resultado">
+          <img *ngFor="let t of [].constructor(4)" src="trozo_pastel.png" class="icono-img" />
+        </div>
+      </div>
+      <p *ngIf="resueltos.pastel1">
+        <span *ngIf="correctos.pastel1">✅</span>
+        <span *ngIf="!correctos.pastel1">❌</span>
+      </p>
+      <div class="recuadro-ejemplo" *ngIf="resueltos.pastel1">
+        <p class="texto-comparacion"><code>int pastel1 = 2;<br/><br/>int pastel2 = 4;<br/><br/><strong>pastel1 <  pastel2</strong></code></p>
+      </div>  
+      <br /><br />
+
+      <h2>📝¿tiene al menos las mismas vacas?📝</h2>
+      <div class="bloque-codigo">
+        <p>int vacas1 = 2;</p>
+        <p>int vacas2 = 4;</p>
+      </div>
+      <p class="texto-comparacion">¿Es cierto que <code>vacas1 >= vacas2</code>?</p>
+      <div class="opciones-booleanas">
+        <button (click)="verificarComparacionExtra(true, 'mayorIgual')" [disabled]="resueltos.mayorIgual">TRUE</button>
+        <button (click)="verificarComparacionExtra(false, 'mayorIgual')" [disabled]="resueltos.mayorIgual">FALSE</button>
+      </div>
+      <p *ngIf="resueltos.mayorIgual">
+        <span *ngIf="correctos.mayorIgual">✅</span>
+        <span *ngIf="!correctos.mayorIgual">❌</span>
+      </p>
+
+      <br /><br />
+
+      <h2>📝¿tiene menos o igual pastel?📝</h2>
+      <div class="bloque-codigo">
+        <p>int pastel1 = 2;</p>
+        <p>int pastel2 = 2;</p>
+      </div>
+      <p class="texto-comparacion">¿Es cierto que <code>pastel1 <= pastel2</code>?</p>
+      <div class="opciones-booleanas">
+        <button (click)="verificarComparacionExtra(true, 'menorIgual')" [disabled]="resueltos.menorIgual">TRUE</button>
+        <button (click)="verificarComparacionExtra(false, 'menorIgual')" [disabled]="resueltos.menorIgual">FALSE</button>
+      </div>
+      <p *ngIf="resueltos.menorIgual">
+        <span *ngIf="correctos.menorIgual">✅</span>
+        <span *ngIf="!correctos.menorIgual">❌</span>
+      </p>
+      
+      <br /><br />
+
+      <h2>📝¿son distintos?📝</h2>
+      <div class="bloque-codigo">
+        <p>int a = 5;</p>
+        <p>int b = 3;</p>
+      </div>
+      <p class="texto-comparacion">¿Es cierto que <code>a != b</code>?</p>
+      <div class="opciones-booleanas">
+        <button (click)="verificarComparacionExtra(true, 'distinto')" [disabled]="resueltos.distinto">TRUE</button>
+        <button (click)="verificarComparacionExtra(false, 'distinto')" [disabled]="resueltos.distinto">FALSE</button>
+      </div>
+      <p *ngIf="resueltos.distinto">
+        <span *ngIf="correctos.distinto">✅</span>
+        <span *ngIf="!correctos.distinto">❌</span>
+      </p>
+    </div>
+
+    <div class="prueba">
+      <h2>📚¿SABÍAS QUE LAS COMPARACIONES TIENEN TAMBIÉN UN RESULTADO?📚</h2>
+      <p class="texto-comparacion">
+        Cuando escribes una comparación como <code> 2 > 8</code>, ¡el ordenador te dice si es
+        <strong>verdadero</strong> o <strong>falso</strong>! En este ejemplo, <code> 2 > 8</code> es falso.
+      </p>
+      <img src="pelotas.png" alt="Comparación errónea entre pelotas: 2>8" class="img-pelotas" />
+      <p>
+        Como ese resultado es tan útil, lo puedes <strong>guardar en una variable</strong>. Recordemos que el tipo <code>bool</code> guarda "true" o "false".
+        Por ejemplo:
+      </p>
+      <br/>
+      <div class="texto-comparacion">
+        <p><code>int pelotas_rojas = 2;</code></p>
+        <p><code>int pelotas_azules = 8;</code></p>
+        <p><code>bool hay_mas_pelotas_rojas = (pelotas_rojas > pelotas_azules);</code></p>
+      </div>
+      <br/>
+      <p class="texto-comparacion">
+        Ahora, la variable <code>hay_mas_pelotas_rojas</code> guarda el valor <strong>false</strong> porque
+        <code>pelotas_rojas</code> es menor que <code>pelotas_azules</code>.
+      </p>
+      <br /><hr>
+
+      <h2>📝¿qué se guarda en la variable?📝</h2>
+      <div class="bloque-codigo">
+        <p>int edad1 = 8;</p>
+        <p>int edad2 = 8;</p>
+        <p>bool iguales = (edad1 == edad2);</p>
+      </div>
+      <p class="texto-comparacion">¿Qué valor guarda la variable <code>iguales</code>?</p>
+      <div class="opciones-booleanas">
+        <button (click)="verificarComparacionExtra(true, 'igualGuardado')" [disabled]="resueltos.igualGuardado">TRUE</button>
+        <button (click)="verificarComparacionExtra(false, 'igualGuardado')" [disabled]="resueltos.igualGuardado">FALSE</button>
+      </div>
+      <p *ngIf="resueltos.igualGuardado">
+        <span *ngIf="correctos.igualGuardado">✅</span>
+        <span *ngIf="!correctos.igualGuardado">❌</span>
+      </p>
+    </div>
+
+    <div class="prueba">
+      <h2>📚OPERADORES LÓGICOS📚</h2>
+
+      <p class="texto-comparacion">
+        Los <strong>operadores lógicos</strong> combinan varias comparaciones y devuelven
+        <code>true</code> (verdadero) o <code>false</code> (falso).
+        En la mayoría de lenguajes usamos:
+      </p>
+      <div class="lista-operadores">
+        <ul>
+        <li><code>&&</code> (AND) – Verdadero si <em>todas</em> las condiciones son verdaderas.</li>
+        <li><code>||</code> (OR) – Verdadero si <em>al menos una</em> es verdadera.</li>
+        <li><code>!</code> (NOT) – Invierte el resultado de una condición.</li>
+        </ul>
+      </div>
+      <br/><br/><br/><hr /><br/>
+
+      <h3>📝 ¿puede Juan salir al recreo<strong>(AND)</strong> 📝</h3>
+      <div class="bloque-codigo">
+        <p>bool ha_terminado_tarea = true;</p>
+        <p>bool tiene_permiso = false;</p>
+        <p>bool puede_salir = (ha_terminado_tarea && tiene_permiso);</p>
+      </div>
+      <p class="texto-comparacion">
+        ¿Qué valor tendrá <code>puede_salir</code>?
+      </p>
+      <div class="opciones-booleanas">
+        <button (click)="verificarComparacionExtra(true ,'andTest')"  [disabled]="resueltos.andTest">TRUE</button>
+        <button (click)="verificarComparacionExtra(false,'andTest')"  [disabled]="resueltos.andTest">FALSE</button>
+      </div>
+      <p *ngIf="resueltos.andTest">
+        <span *ngIf="correctos.andTest">✅</span>
+        <span *ngIf="!correctos.andTest">❌</span>
+      </p>
+
+      <br/><br/><hr /><br/>
+
+
+      <h3>📝 ¿puede Inés ver una peli con sus padres? <strong>(OR)</strong> 📝</h3>
+      <div class="bloque-codigo">
+        <p>bool es_fin_de_semana = false;</p>
+        <p>bool ha_terminado_los_deberes = true;</p>
+        <p>bool puede_ver_peli = (es_fin_de_semana || ha_terminado_los_deberes);</p>
+      </div>
+      <p class="texto-comparacion">
+        ¿Qué valor tendrá <code>puede_ver_peli</code>?
+      </p>
+      <div class="opciones-booleanas">
+        <button (click)="verificarComparacionExtra(true ,'orTest')" [disabled]="resueltos.orTest">TRUE</button>
+        <button (click)="verificarComparacionExtra(false,'orTest')" [disabled]="resueltos.orTest">FALSE</button>
+      </div>
+      <p *ngIf="resueltos.orTest">
+        <span *ngIf="correctos.orTest">✅</span>
+        <span *ngIf="!correctos.orTest">❌</span>
+      </p>
+
+      <br/><br/><hr /><br/>
+
+      <h3>📝 ¿está silencioso? <strong>(NOT)</strong> 📝</h3>
+      <div class="bloque-codigo">
+        <p>bool ruido = true;</p>
+        <p>bool silencioso = !ruido;</p>
+      </div>
+      <p class="texto-comparacion">
+        ¿Qué valor tendrá <code>silencioso</code>?
+      </p>
+      <div class="opciones-booleanas">
+        <button (click)="verificarComparacionExtra(true ,'notTest')" [disabled]="resueltos.notTest">TRUE</button>
+        <button (click)="verificarComparacionExtra(false,'notTest')" [disabled]="resueltos.notTest">FALSE</button>
+      </div>
+      <p *ngIf="resueltos.notTest">
+        <span *ngIf="correctos.notTest">✅</span>
+        <span *ngIf="!correctos.notTest">❌</span>
+      </p>
+    </div>
+
+      
+    <button class="btn-finish" (click)="finishLevel()" [disabled]="puedeFinalizar < puntos_maximos">Terminar Nivel</button>
+</div>
+  

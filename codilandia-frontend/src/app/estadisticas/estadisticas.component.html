@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+
+    <img src="logo.png" alt="Logo de Codilandia" class="logo" />
+    <button class="volver" (click)="volver()">◀ VOLVER</button>
+    <div class="modal-overlay" *ngIf="isLoading">
+        <div class="spinner-modal">
+          <div class="spinner"></div>
+        </div>
+      </div> 
+    <h1 class="titulo">{{nombre_usuario}} | {{ curso?.nombre_aula }} | Estadísticas</h1>
+    <div class="estadisticas-container">
+        <div class="seccion">
+            <h2 class="seccion-titulo">ESTADÍSTICAS GENERALES</h2>
+            <div class="nivel-medio">Nivel medio: {{nivel_medio}}
+            </div>
+            <div class="distribucion">
+                <div class="distribucion-titulo">Distribución por niveles:</div>
+                <div class="grafico-fixed-size" *ngIf="barChartData">
+                    <canvas baseChart
+                    [data]="barChartData"
+                    [options]="barChartOptions"
+                    [type]="'bar'">  
+                    </canvas>
+                  </div>
+                  
+            </div>
+        </div>
+        
+        <div class="seccion">
+            <h2 class="seccion-titulo">ESTADÍSTICAS INDIVIDUALES</h2>
+            <div class="alumnos-container">
+                <div class="alumno" *ngFor="let alumno of alumnos">
+                    <button class="btn" (click)="openAlumnoPopup(alumno)">{{alumno?.nombre_nino}}</button>
+                </div>
+            </div>
+            <p *ngIf="alumnos.length == 0">No hay alumnos por el momento.</p>
+        </div>
+        <div *ngIf="showPopup" class="popup-overlay" (click)="closePopup()">
+            <div class="popup-content" (click)="$event.stopPropagation()">
+                <div class="popup-header">
+                    <h2 class="titulillo">Estadísticas de {{selectedAlumno?.nombre_nino}}</h2>
+                    <button class="close-btn" (click)="closePopup()">&times;</button>
+                </div>
+                <div class="popup-body">
+                    <p class="black"><strong>Correo:</strong> {{ selectedAlumno?.correo_nino }}</p>
+                    <p class="black"><strong>Nivel actual:</strong> {{ selectedAlumno?.nivel_actual }}</p>
+                  
+                    <!-- Nota media únicamente si hay notas -->
+                    <p *ngIf="selectedAlumno?.notas?.length > 0" class="black">
+                      <strong>Nota media:</strong>
+                      {{ selectedAlumno.nota_media | number:'1.2-2' }}
+                    </p>
+                    <!-- Mensaje solo si NO hay notas -->
+                    <p *ngIf="selectedAlumno?.notas?.length === 0" class="black">
+                      No hay resultados todavía
+                    </p>
+                  
+                    <h3 *ngIf="selectedAlumno?.notas?.length > 0">Notas por nivel:</h3>
+                    <div *ngIf="selectedAlumno?.notas?.length > 0">
+                      <table class="notas-table">
+                        <thead>
+                          <tr><th>Nivel</th><th>Nota</th></tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let nota of selectedAlumno.notas">
+                            <td>Nivel {{ nota.numero_nivel }}</td>
+                            <td>{{ nota.nota }}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                             
+            </div>
+        </div>
+    </div>
+</html>

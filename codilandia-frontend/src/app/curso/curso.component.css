@@ -1,0 +1,135 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #b8d9f0;
+}
+
+.volver {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: none;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+    font-weight: 600;
+  }
+
+  .titulo {
+    font-size: 2em;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    margin-top: 140px;
+    margin-bottom: 30px;
+}
+
+
+h2 {
+    color: white;
+    font-size: 1.5em;
+    justify-items: center; 
+    text-align: center;
+}
+
+.cursos-grid {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
+  width: 90%;
+  max-width: 600px;
+  text-align: center;
+  margin: 20px auto;
+}
+
+.cursos-grid:hover .notificacion {
+  transform: scale(1.2);
+}
+
+.curso-btn {
+    background-color: #6c94eb;
+    color: white;
+    font-weight: bold;
+    padding: 20px; 
+    font-size: 1.2em;
+    border: none;
+    border-radius: 15px;
+    width: 100%; 
+    max-width: 700px; 
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 15px; 
+}
+
+.curso-btn:hover {
+    background-color: #5a82d6;
+    transform: scale(1.05);
+}
+
+.notificacion {
+  position: absolute;      /* relativo a .cursos-grid */
+  top: -12px;              /* 12px por encima del contenedor */
+  left: -12px;             /* 12px a la izquierda */
+  width: 36px;             /* ajusta al gusto */
+  height: 36px;
+  font-size: 1.3em;        /* texto más grande */
+  background: red;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  z-index: 100;            /* siempre por encima */
+  transition: transform 0.2s ease;
+}
+
+.logo {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 120px;
+}
+
+
+.spinner-modal {
+    background: transparent;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+.spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3); 
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+  }
+  
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); 
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(2px); 
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }

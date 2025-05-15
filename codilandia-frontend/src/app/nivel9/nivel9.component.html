@@ -1,0 +1,179 @@
+<div class="nivel9-container">
+    <button class="volver" (click)="router.navigate(['/nivelesNinos'])">◀ VOLVER</button>
+  
+    <h1>🔁NIVEL 9: BUCLES WHILE🔁</h1>
+  
+    <div class="prueba">
+        <h2>📚¿QUÉ ES UN BUCLE WHILE?📚</h2>
+        <p>
+          A veces, queremos que un programa <strong>haga algo muchas veces</strong>, ¡hasta que ya no sea necesario!
+        </p>
+        <p>
+          Por ejemplo: <br>
+          👉 Mientras <strong>no esté limpia</strong> tu habitación, <strong>sigues ordenando</strong>. 🧹<br>
+          👉 Mientras <strong>no te acabes el helado</strong>, <strong>sigues comiendo</strong>. 🍦
+        </p>
+        <p>Para eso usamos <code>while</code> (que significa <strong>"mientras"</strong>).</p>
+        <p>Así le decimos al programa: <strong>"Mientras pase algo, sigue repitiendo esto."</strong></p>
+        <br/><br/><br/><hr /><br/>
+
+        <h2>📝escribe un primer bucle con while📝</h2>
+        <p>Escribe una decisión que ejecute <strong>bailo()</strong></p>
+        <p><strong>Ejemplo Notación:</strong></p>
+        <p>
+          <div class="recuadro-ejemplo">
+            <pre><code>while (habitacion_sucia) {{ '{' }}<br/>   ordeno("habitacion");<br/>{{ '}' }}<code style="color: white" ></code></code></pre>
+          </div>
+        <div class="bloque-codigo">
+          <pre class="esp"><code class="enunciado">while (suena_musica) {{ '{' }}</code></pre>
+          <pre><code class="enunciado"><input type="text" style="background: white; border: 2px solid #585858; font-family: monospace; margin-left: 3ch; width: 300px; padding: 2px 4px;" [(ngModel)]="comentario1" [disabled]="resueltos.comentario1" /></code></pre>
+          <pre><code class="enunciado">{{ '}' }}</code></pre>
+        </div>
+        <button class="btn-verificar" (click)="verificarPrueba1()"  [disabled]="resueltos.comentario1">Verificar</button>
+        <div *ngIf="resueltos.comentario1">
+          <span *ngIf="correctos.comentario1">✅</span>
+          <span *ngIf="!correctos.comentario1">❌<br/></span>
+          <p class="recuadro-ejemplo" *ngIf="!correctos.comentario1">La respuesta era:<br/><code>bailo();</code></p>
+        </div>
+
+        <div *ngIf="correctos.comentario1 && resueltos.comentario1" class="nota">
+          <img src="robot.gif" alt="robot bailando" class="robot" />
+        </div>
+
+      </div>
+
+      <div class="prueba">
+        <h2>📚VERIFICACIÓN CON VARIABLES BOOLEANAS📚</h2>
+        <p>
+          Podemos usar variables booleanas para evaluar nuestros bucles while.
+          El bucle terminará cuando el valor de la variable sea <strong>true</strong> o <strong>false</strong>
+          según nos convenga.
+          <div class="recuadro-ejemplo">
+            <pre><code>boolean acabado = false;<br/>while (acabado == false) {{ '{' }}<br/><code class="comentario-code">   // Espero</code><br/>{{ '}' }}<code style="color: white" >                         </code></code></pre>
+          </div>
+        <br/><br/><br/><hr /><br/>
+
+        <h2>📝completa el bucle📝</h2>
+        <p>¿Qué tiene que pasar para que termine el bucle? </p>
+        <div class="bloque-codigo">
+          <pre class="esp"><code class="enunciado">boolean terminado = true;</code></pre>
+          <pre><code class="enunciado">while (terminado == true) {{ '{' }}</code></pre>
+          <pre><code class="enunciado"><input type="text" style="background: white; border: 2px solid #585858; font-family: monospace; margin-left: 3ch; width: 300px; padding: 2px 4px;" [(ngModel)]="comentario2" [disabled]="resueltos.comentario2" /></code></pre>
+          <pre><code class="enunciado">{{ '}' }}</code></pre>
+        </div>
+        <button class="btn-verificar" (click)="verificarPrueba2()"  [disabled]="resueltos.comentario2">Verificar</button>
+        <div *ngIf="resueltos.comentario2">
+          <span *ngIf="correctos.comentario2">✅</span>
+          <span *ngIf="!correctos.comentario2">❌<br/></span>
+          <p class="recuadro-ejemplo" *ngIf="!correctos.comentario2">La respuesta era: <code>terminado = false;</code></p>
+        </div>
+
+        <br /><br/><hr><br/>
+
+        <h3>⚠️¡Cuidado con los bucles infinitos!⚠️</h3>
+        <p>
+          A veces, si olvidamos cambiar la condición, el bucle <strong>nunca termina</strong>.  
+          Eso se llama un <strong>bucle infinito</strong> y puede hacer que el programa se quede atascado. 😱
+        </p>
+          Por ejemplo:<br/>
+          <div class="recuadro-ejemplo">
+            <pre><code>boolean jugando = true;<br/>while (jugando == true) {{ '{' }}<br/>   juego();<br/>{{ '}' }}<code style="color: white">                         </code></code></pre>
+          </div>
+        <p>
+          Si nunca ponemos <code>jugando = false;</code> dentro del bucle, ¡nunca parará de jugar! 🎮
+        </p>
+        <p>
+          ⚠️ <strong>¡Recuerda siempre asegurarte de que el bucle pueda terminar!</strong>
+        </p>
+      </div>
+      
+
+      <div class="prueba">
+        <h2>📝escribe un bucle usando variables📝</h2>
+        <p>Elige un número de pasteles entre <strong>1</strong> y <strong>10</strong> que quieras comer.</p>
+        <p>En cada iteración del bucle debes<strong> eliminar un pastel.</strong></p>
+        <p><strong>Ejemplo Notación:</strong></p>
+        <p>
+          <div class="recuadro-ejemplo">
+            <pre><code>int manzanas = 0;<br/>while (manzanas < 10)  {{ '{' }}<br/>   manzanas = manzanas + 1; <code class="comentario-code">// Añade una manzana</code><br/>{{ '}' }}<code style="color: white" >                   </code></code></pre>
+          </div>
+          <div class="bloque-codigo">      
+            <pre><code class="enunciado">int pasteles = <code class="enunciado"><input type="number" style="background: white; border: 2px solid #585858; font-family: monospace; margin-left: 1ch; width: 75px; padding: 2px 4px;" [(ngModel)]="numeroPasteles" [disabled]="resueltos.comentario3 || numeroPasteles < 1 || numeroPasteles > 10" min="1" max="10" />;</code></code></pre>
+
+            <pre><code class="enunciado">while (pasteles > 0) {{ '{' }}</code></pre>
+            <pre><code class="enunciado"><input type="text" style="background: white; border: 2px solid #585858; font-family: monospace; margin-left: 3ch; width: 300px; padding: 2px 4px;" [(ngModel)]="comentario4" [disabled]="resueltos.comentario4" /></code></pre>
+            <pre><code class="enunciado">{{ '}' }}</code></pre>
+          </div>
+          <div class="pasteles">
+          <div *ngIf="numeroPasteles < 11">
+            <img *ngFor="let m of [].constructor(numeroPasteles) " src="pastel.png" alt="manzana" />
+          </div>
+        </div>
+        <button class="btn-verificar" (click)="verificarPrueba3()"  [disabled]="resueltos.comentario3 && correctos.comentario3 && resueltos.comentario4">Verificar</button>
+        <div *ngIf="resueltos.comentario3 && resueltos.comentario4">
+          <span *ngIf="correctos.comentario4 && correctos.comentario3">✅</span>
+          <span *ngIf="!correctos.comentario4">❌<br/></span>
+          <p class="recuadro-ejemplo" *ngIf="!correctos.comentario4">La respuesta era:<code>pasteles = pasteles - 1;</code></p>
+        </div>
+      </div>
+      
+  
+      <div class="prueba">
+        <h2>📝¿qué has aprendido de los bucles while?📝</h2>
+        <p class="sp">Selecciona la opción adecuada para cada caso en base a lo visto anteriormente.</p>
+        
+        <p>¿Qué pasa si la condición del bucle while nunca se vuelve falsa?</p>
+      
+        <div *ngIf="!resueltos.comentario5" class="lista-opciones">
+          <label *ngFor="let opcion of opciones2" class="opcion" >
+            <input type="radio"  name="comentario2" [value]="opcion" [(ngModel)]="comentario5" />
+            {{ opcion }}
+          </label>
+          <button class="btn-verificar" (click)="verificarPrueba4()">Verificar</button>
+        </div>
+      
+        <div *ngIf="resueltos.comentario5">
+          <span *ngIf="correctos.comentario5">✅</span>
+          <span *ngIf="!correctos.comentario5">❌<br/></span>
+          <p class="recuadro-ejemplo" *ngIf="!correctos.comentario5">La respuesta era: <strong>El bucle sigue para siempre.</strong></p>
+        </div>
+
+        <br /><hr><br />
+
+        <div class="recuadro-ejemplo">
+          <pre><code>int galletas = 5;<br/>while (galletas > 0)  {{ '{' }}<br/>   galletas = galletas - 1; <code class="comentario-code">// Como una galleta</code><br/>{{ '}' }}<code style="color: white" >                   </code></code></pre>
+        </div>
+        <p>¿Cuántas veces se ejecuta el bucle?</p>
+        <div *ngIf="!resueltos.comentario6" class="lista-opciones">
+          <label *ngFor="let opcion of opciones3" class="opcion">
+            <input type="radio" name="comentario3" [value]="opcion" [(ngModel)]="comentario6" />
+            {{ opcion }}
+          </label>
+          <button class="btn-verificar" (click)="verificarPrueba5()">Verificar</button>
+        </div>
+      
+        <div *ngIf="resueltos.comentario6">
+          <span *ngIf="correctos.comentario6">✅</span>
+          <span *ngIf="!correctos.comentario6">❌<br/></span>
+          <p class="recuadro-ejemplo" *ngIf="!correctos.comentario6">La respuesta era: <strong>5</strong></p>
+        </div>
+
+        <br /><hr><br />
+
+        <p>¿Cuál de estas frases es como un bucle en la vida real?</p>
+        <div *ngIf="!resueltos.comentario7" class="lista-opciones">
+          <label *ngFor="let opcion of opciones4"  class="opcion">
+            <input type="radio" name="comentario7" [value]="opcion" [(ngModel)]="comentario7" />
+            {{ opcion }}
+          </label>
+          <button class="btn-verificar" (click)="verificarPrueba6()">Verificar</button>
+        </div>
+      
+        <div *ngIf="resueltos.comentario7">
+          <span *ngIf="correctos.comentario7">✅</span>
+          <span *ngIf="!correctos.comentario7">❌<br/></span>
+          <p class="recuadro-ejemplo" *ngIf="!correctos.comentario7">La respuesta era: <strong>Mientras no esté limpia tu habitación, sigues ordenando.</strong></p>
+        </div>
+      </div>
+      <button class="btn-finish" (click)="finishLevel()" [disabled]="!puedeFinalizar">Terminar Nivel</button>
+</div>

@@ -1,0 +1,151 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #b8d9f0;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.volver {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: none;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+    font-weight: 600;
+    transition: color 0.3s ease-in-out;
+}
+
+
+.titulo {
+    font-size: 2em;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    margin-top: 140px;
+    margin-bottom: 30px;
+}
+
+.alumnos-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(300px, 1fr)); /* 3 columnas con ancho mínimo y flexible */
+    gap: 50px;
+    justify-content: center;
+    padding: 20px;
+    max-width: 100%; /* Ocupa todo el ancho disponible */
+    margin: 30px auto; /* Centrar el contenedor */
+    max-height: 70vh; /* Ajusta esta altura según tu preferencia */
+    overflow-y: visible; /* Añade desplazamiento vertical */
+    overflow-x: hidden;
+    padding-left: 10%; /* Añade espacio a la izquierda */
+    padding-right: 10%; /* Añade espacio a la derecha */
+}
+
+
+
+.alumno {
+    background-color: #5a82d6;
+    color: white;
+    font-weight: bold;
+    padding: 5px;
+    font-size: 1.8em;
+    border-radius: 10px;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+}
+
+.alumno:hover {
+    transform: scale(1.0);
+}
+
+.btn {
+    font-size: 1em;
+    padding: 5px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 5px;
+    font-weight: bold;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+.eliminar {
+    background-color: #ff6b6b;
+    color: white;
+    font-size: 0.9em;
+}
+
+.aceptar {
+    background-color: #78dd75;
+    color: white;
+}
+
+p{
+    text-align: center;
+    align-self: center;
+    font-size: 30px;
+}
+
+/* RESPONSIVIDAD */
+@media (max-width: 800px) {
+    .alumnos-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas medianas */
+    }
+}
+
+@media (max-width: 500px) {
+    .alumnos-container {
+        grid-template-columns: 1fr; /* 1 columna en pantallas pequeñas */
+    }
+}
+
+.logo {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 120px;
+}
+
+.spinner-modal {
+    background: transparent;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  .spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3); 
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+  }
+  
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); 
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(2px); 
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }

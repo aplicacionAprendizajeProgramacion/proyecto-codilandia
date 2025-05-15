@@ -1,0 +1,255 @@
+<div class="nivel11-container">
+  <button class="volver" (click)="router.navigate(['/nivelesNinos'])">◀ VOLVER</button>
+
+  <h1>🛠️NIVEL 11: FUNCIONES🛠️</h1>
+
+  <div class="prueba">
+    <h2>📚¿QUÉ ES UNA FUNCIÓN?📚</h2>
+  
+    <p>
+      Una <strong>función</strong> en programación es como una <strong>receta</strong> o una <strong>orden mágica</strong> que le damos al ordenador. 🧙‍♂️💡<br />
+      Sirve para <strong>repetir instrucciones</strong> sin tener que escribirlas muchas veces.
+    </p>
+  
+    <p>
+      Por ejemplo, si queremos que el ordenador diga <strong>"¡Hola Codilandia!"</strong>, podemos escribirlo dentro de una función.
+    </p>
+  
+    <p class="recuadro-ejemplo">
+      <code><strong>tipo nombre_funcion(parámetros) {{ '{' }}<br />
+        <span class="sangria">// instrucciones</span><br />
+        {{ '}' }}</strong></code>
+    </p>
+  
+    <p class="texto-comparacion">
+      🔍 <strong>¿Qué significa cada parte?</strong>
+    </p>
+  
+    <div class="lista-operadores">
+      <ul>
+        <li><code>tipo</code> → qué devuelve la función: puede ser <strong>int</strong>, <strong>string</strong>, <strong>bool</strong>, <strong>double</strong>... o <strong>void</strong> si no devuelve nada.</li>
+        <br/>
+        <li><code>nombre_funcion</code> → el nombre que le damos (¡el que usaremos para llamarla!)</li>
+        <br/>
+        <li><code>parámetros</code> → lo que necesita para funcionar (puede estar vacío)</li>
+        <br/>
+        <li><code>return</code> → si el tipo <strong>NO es void</strong>, usamos <strong>return</strong> para decir qué valor devuelve.</li>
+        <br/>
+        <li><code>{{ '{' }} instrucciones {{ '}' }}</code> → lo que hace la función, como si fuera su cuerpo</li>
+      </ul>
+    </div>
+    <br /><br/><hr><br />
+
+    <p class="texto-comparacion">
+      <strong>Ejemplo 1: </strong>Esta función <code>void saludar()</code> no devuelve nada (no hace return) ya que es de tipo <code>void</code>, y solo imprime un saludo:
+    </p>
+  
+    <div class="bloque-codigo">
+      <p>void saludar() {{ '{' }}</p>
+      <p style="padding-left: 20px;">cout &lt;&lt; "¡Hola Codilandia!" &lt;&lt; endl;</p>
+      <p>{{ '}' }}</p>
+    </div>
+  
+    <br /><br/><hr><br />
+
+    <p class="texto-comparacion">
+      🧮 También podemos tener funciones que <strong>devuelven valores</strong>, como un número.
+    </p>
+  
+    <div class="bloque-codigo">
+      <p>int sumar() {{ '{' }}</p>
+      <p style="padding-left: 20px;">return 2 + 3;</p>
+      <p>{{ '}' }}</p>
+    </div>
+  
+    <p class="texto-comparacion">
+      Esta función se llama <code>sumar()</code> y devuelve un número (<code>int</code>) porque <code>2 + 3 = 5</code>.
+    </p>
+  
+    <br/><hr><br />
+
+    <p class="texto-comparacion">
+      ✅ También podemos usar <code>bool</code> para funciones que devuelven verdadero o falso:
+    </p>
+  
+    <div class="bloque-codigo">
+      <p>bool esMayor() {{ '{' }}</p>
+      <p style="padding-left: 20px;">return 10 &gt; 5;</p>
+      <p>{{ '}' }}</p>
+    </div>
+  
+    <p class="texto-comparacion">
+      Aquí devolvemos <code>true</code> porque 10 sí es mayor que 5.
+    </p>
+  
+    <br /><br/><hr>
+
+    <p class="texto-comparacion">
+      <br/><br/>✉️ Y también podemos devolver texto usando <code>string</code>:
+    </p>
+  
+    <div class="bloque-codigo">
+      <p>string getNombre() {{ '{' }}</p>
+      <p style="padding-left: 20px;">return "Leo";</p>
+      <p>{{ '}' }}</p>
+    </div>
+  
+    <p class="texto-comparacion">
+      Esto devuelve la palabra "Leo". ¡Como si le preguntaras al ordenador: “¿Cómo te llamas?”!
+    </p>
+  
+    <br /><br/><hr>
+
+    <p class="texto-comparacion">
+      <br/><br/>🧮 Por último, si queremos un número con decimales, usamos <code>double</code>:
+    </p>
+  
+    <div class="bloque-codigo">
+      <p>double calcularArea() {{ '{' }}</p>
+      <p style="padding-left: 20px;">return 3.14 * 2 * 2;</p>
+      <p>{{ '}' }}</p>
+    </div>
+  
+    <p class="texto-comparacion">
+      ¡Esta función devuelve el área de un círculo de radio 2!
+    </p>
+  </div>  
+  
+
+  <div class="prueba">
+    <h2>📝 Completa una función básica</h2>
+    <p>
+      Queremos una función que diga "¡Bienvenido a Codilandia!".<br/>
+      Rellena los espacios:
+    </p>
+    <p class="recuadro-ejemplo">
+      <code>
+        ____ bienvenida() {{ '{' }}<br/>
+        <span class="sangria">cout &lt;&lt; "¡Bienvenido a Codilandia!";</span><br/>
+        {{ '}' }}
+      </code>
+    </p>
+    <br/>
+    <input type="text" [(ngModel)]="respuestaFuncion" [disabled]="resueltoFuncion" placeholder="¿Qué tipo falta?" />
+    <button class="btn-verificar" (click)="verificarFuncion()" [disabled]="resueltoFuncion">Verificar</button>
+
+    <p *ngIf="resueltoFuncion">
+      <span *ngIf="respuestaCorrectaFuncion">✅</span>
+      <span *ngIf="!respuestaCorrectaFuncion">❌</span>
+    </p>
+  </div>
+
+  <div class="prueba">
+    <h2>🛠️ ¿CÓMO LLAMAMOS A UNA FUNCIÓN? 🛠️</h2>
+  
+    <p>
+      Una vez que hemos escrito nuestra función, como por ejemplo esta que saluda:
+    </p>
+  
+    <div class="bloque-codigo">
+      <p>void saludar() {{ '{' }}</p>
+      <p style="padding-left: 20px;">cout &lt;&lt; "¡Hola, Codilandia!" &lt;&lt; endl;</p>
+      <p>{{ '}' }}</p>
+    </div>
+  
+    <p>
+      Todavía no se ejecuta sola. 🤔 Para que ocurra lo que hay dentro, hay que <strong>llamarla</strong> desde otra parte del programa, como <code>main()</code>.
+    </p>
+  
+    <p class="texto-comparacion">👇 Así lo hacemos:</p>
+  
+    <div class="bloque-codigo">
+      <p>int main() {{ '{' }}</p>
+      <p style="padding-left: 20px;">saludar();</p>
+      <p style="padding-left: 20px;">return 0;</p>
+      <p>{{ '}' }}</p>
+    </div>
+  
+    <p>
+      Fíjate que la escribimos con su <strong>nombre</strong> y <code>()</code>. ¡Eso le dice al programa: “ejecuta lo que hay dentro”! 🔁
+    </p>
+
+    <br /><br/><hr><br />
+
+    <p class="texto-comparacion">
+      Entonces, si tenemos esta función:
+    </p>
+  
+    <div class="bloque-codigo">
+      <p>void bienvenida() {{ '{' }}</p>
+      <p style="padding-left: 20px;">cout &lt;&lt; "¡Bienvenido a Codilandia!" &lt;&lt; endl;</p>
+      <p>{{ '}' }}</p>
+    </div>
+  
+    <p class="texto-comparacion">
+      👉 ¿Cómo la llamarías tú para que funcione?
+    </p>
+  
+    <input type="text" [(ngModel)]="respuestaLlamada" [disabled]="resueltoLlamada" placeholder="¿Cómo se llama?" />
+    <button class="btn-verificar" (click)="verificarLlamada()" [disabled]="resueltoLlamada">Verificar</button>
+    <br/>
+    <p *ngIf="resueltoLlamada">
+      <span *ngIf="respuestaCorrectaLlamada">✅</span>
+      <span *ngIf="!respuestaCorrectaLlamada">❌</span>
+    </p>
+    <p class="recuadro-ejemplo" *ngIf="resueltoLlamada">
+      <code>bienvenida();</code>
+    </p>
+  </div>
+  
+  <div class="prueba">
+    <h2>🎁 ¿QUÉ SON LOS PARÁMETROS?</h2>
+    <p>
+      Los <strong>parámetros</strong> son como <strong>ingredientes</strong> que necesita una receta. 🍰📦<br/>
+      Si hacemos una función que sume, necesita los <strong>dos números</strong> que queremos sumar. Esos números son sus parámetros.
+    </p>
+  
+    <div class="bloque-codigo">
+      <p>int sumar(int a, int b) {{ '{' }}</p>
+      <p style="padding-left: 20px;">return a + b;</p>
+      <p>{{ '}' }}</p>
+    </div>
+  
+    <p class="texto-comparacion">
+      Aquí la función se llama <code>sumar</code> y necesita <code>a</code> y <code>b</code> para funcionar.<br/>
+      Cuando la usamos así: <code>sumar(3, 5)</code>, devuelve <code>8</code> ✅
+    </p>
+  
+    <p>También podemos tener funciones como esta, que saludan usando un <code>string</code>:</p>
+  
+    <div class="bloque-codigo">
+      <p>void saludar(string nombre) {{ '{' }}</p>
+      <p style="padding-left: 20px;">cout &lt;&lt; "¡Hola " &lt;&lt; nombre &lt;&lt; "!";</p>
+      <p>{{ '}' }}</p>
+    </div>
+  
+    <p class="texto-comparacion">
+      Si ponemos <code>saludar("Ana")</code>, el resultado sería:<br/>
+      <span class="recuadro-ejemplo"><code>¡Hola Ana!</code></span>
+    </p>
+  
+    <hr style="margin: 30px 0;" />
+  
+    <h2>🧪 Escribe los parámetros correctos</h2>
+    <p>
+      Queremos una función que reciba <strong>dos números</strong> enteros para sumarlos.<br/>
+      Escribe los <strong>parámetros correctos</strong> que irían dentro de los paréntesis.
+    </p>
+  
+    <p class="texto-comparacion">👀 Recuerda que cada parámetro empieza por <code>tipo de variable</code> y debe tener un nombre. Los parámetros se separan por comas</p>
+  
+    <div class="bloque-codigo" style="background: #fffce0;">
+      <p>int sumar(<input type="text" [(ngModel)]="respuestaParametros" [disabled]="resueltoParametros" style="width: 250px;" />)</p>
+    </div>
+  
+    <button class="btn-verificar" (click)="verificarParametros()" [disabled]="resueltoParametros">Verificar</button>
+  
+    <p *ngIf="resueltoParametros">
+      <span *ngIf="respuestaCorrectaParametros">✅</span>
+      <span *ngIf="!respuestaCorrectaParametros">❌</span>
+    </p>
+  </div>
+  
+
+  <button class="btn-finish" (click)="finishLevel()">Terminar Nivel</button>
+</div>

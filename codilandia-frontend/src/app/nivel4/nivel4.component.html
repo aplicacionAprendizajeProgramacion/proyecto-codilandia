@@ -1,0 +1,276 @@
+<div class="nivel4-container">
+  <button class="volver" (click)="router.navigate(['/nivelesNinos'])">◀ VOLVER</button>
+  
+  <h1>🧮NIVEL 4: OPERACIONES ARITMÉTICAS 🧮 </h1>
+
+  <div class="prueba">
+    <h2>📚¿QUÉ SON LAS OPERACIONES ARITMÉTICAS?📚</h2>
+    <p>
+      Son las acciones básicas que hacemos con números: sumar, restar, multiplicar y dividir.
+      Nos sirven para contar, repartir y resolver problemas.
+    </p>
+    <p>
+      También podemos guardar el resultado en una <strong>variable</strong> para luego mostrarlo en pantalla o seguir haciendo cálculos.
+    </p>
+    <p class="recuadro-ejemplo"><em><strong>✏️ Así lo escribimos: </strong></em><code>int resultado = 3 + 5;</code></p>
+    
+    <br /><hr><br />
+
+    <h2>📝suma de manzanas📝</h2>
+    <p>Elige cuántas manzanas hay en cada cesta:</p>
+    <label>Cesta 1: <input type="number" [(ngModel)]="suma1.cesta1" min="0" [disabled]="resueltoSuma" /></label>
+    <div class="imagen-resultado">
+      <img *ngFor="let n of [].constructor(suma1.cesta1 || 0)" src="manzana.png" class="icono-img" />
+    </div>
+
+    <label>Cesta 2: <input type="number" [(ngModel)]="suma1.cesta2" min="0" [disabled]="resueltoSuma"/></label>
+    <div class="imagen-resultado">
+      <img *ngFor="let n of [].constructor(suma1.cesta2 || 0)" src="manzana.png" class="icono-img" />
+    </div>
+
+    <button class="btn-verificar" (click)="verificarSuma()" [disabled]="resueltoSuma">Verificar</button>
+
+    <div *ngIf="resueltoSuma">
+      <p *ngIf="suma1.total === 1"><strong>Resultado: </strong> {{ suma1.total }} manzana 🍎</p>
+      <p *ngIf="suma1.total !== 1"><strong>Resultado: </strong> {{ suma1.total }} manzanas 🍎</p>    
+      <p class="recuadro-ejemplo"><code><strong>int manzanas = {{suma1.cesta1}} + {{suma1.cesta2}};</strong></code></p>
+      <div class="imagen-resultado">
+        <img *ngFor="let n of [].constructor(suma1.total)" src="manzana.png" class="icono-img" />
+      </div>
+    </div>
+
+    <br /><hr><br />
+
+    <h2>📝resta de manzanas📝</h2>
+    <p>Elige cuántas manzanas hay en la cesta, y cuántas tomas:</p>
+
+    <label>Manzanas en la cesta: <input type="number" [(ngModel)]="resta.cesta" min="0" [disabled]="resueltoResta" /></label>
+    <div class="imagen-resultado">
+      <img *ngFor="let n of [].constructor(resta.cesta || 0)" src="manzana.png" class="icono-img" />
+    </div>
+
+    <label>Manzanas que tomas:   <input type="number" [(ngModel)]="resta.tomar" [max]="resta.cesta" min="0" [disabled]="resueltoResta"/></label>
+    <div class="imagen-resultado">
+      <img *ngFor="let n of [].constructor(resta.tomar || 0)" src="manzana.png" class="icono-img" />
+    </div>
+
+    <button class="btn-verificar" (click)="verificarResta()" [disabled]="resueltoResta">Verificar</button>
+
+    <div *ngIf="resueltoResta">
+      <p *ngIf="resta.resultado === 1"><strong>Queda:</strong> {{ resta.resultado }} manzana 🍎</p>
+      <p *ngIf="resta.resultado !== 1"><strong>Quedan:</strong> {{ resta.resultado }} manzanas 🍎</p>      
+      <p class="recuadro-ejemplo"><code><strong>int manzanas = {{resta.cesta}} - {{resta.tomar}};</strong></code></p>
+      <div class="imagen-resultado">
+        <img *ngFor="let n of [].constructor(resta.resultado)" src="manzana.png" class="icono-img" />
+      </div>
+    </div>
+
+    <br /><hr><br />
+
+    <h2>📝multiplicación de vacas por corral📝</h2>
+    <p>¿Cuántas vacas hay en cada corral? ¿Y cuántos corrales tienes?</p>
+
+    <label>Vacas por corral:   <input type="number" [(ngModel)]="multi.porCorral" min="0" max="4" [disabled]="resueltoMultiplicacion" /></label>
+    <div class="imagen-resultado">
+      <img *ngFor="let v of [].constructor(multi.porCorral || 0)" src="vaca.png" class="img-vaca grande" />
+    </div>
+
+    <label>Número de corrales: <input type="number" [(ngModel)]="multi.numCorrales" min="0" max="10" [disabled]="resueltoMultiplicacion" /></label>
+    <div class="imagen-resultado">
+      <img *ngFor="let c of [].constructor(multi.numCorrales || 0)" src="corral.png" class="img-corral grande" />
+    </div>
+
+    <button class="btn-verificar" (click)="verificarMultiplicacion()" [disabled]="resueltoMultiplicacion">Verificar</button>
+
+    <div *ngIf="resueltoMultiplicacion">
+      <p *ngIf="multi.resultado === 1"><strong>Total: </strong> {{ multi.resultado }} vaca 🐄</p>
+      <p *ngIf="multi.resultado !== 1"><strong>Total: </strong> {{ multi.resultado }} vacas 🐄</p>  
+      <p class="recuadro-ejemplo"><code><strong>int vacas_totales = {{multi.porCorral}} * {{multi.numCorrales}};</strong></code></p>
+      <div class="imagen-resultado">
+        <img *ngFor="let v of [].constructor(multi.resultado)" src="vaca.png" class="img-vaca grande" />
+      </div>
+      <br /><br /><p>Así quedarán las vacas distribuídas: </p>
+
+      <div class="corrales2">
+        <div
+          class="corral"
+          *ngFor="let corral of [].constructor(multi.numCorrales || 0)"
+        >
+          <img src="corral.png" class="img-corral2 grande" />
+          <div class="vacas-en-corral">
+            <img
+              *ngFor="let vaca of [].constructor(multi.porCorral || 0)"
+              src="vaca.png"
+              class="img-vaca ajustable"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br /><hr><br />
+
+    <h2>📝División de porciones entre niños📝</h2>
+    <p>Tienes unas porciones de tarta para repartir entre niños.</p>
+
+    <label>Porciones de tarta: 
+      <input type="number" [(ngModel)]="div.porciones" min="1"  [disabled]="resueltoDivision"/>
+    </label>
+    <div class="imagen-resultado">
+      <img *ngFor="let p of [].constructor(div.porciones || 0)" src="trozo_pastel.png" class="img-porcion grande" />
+    </div>
+
+    <label>Niños: 
+      <input type="number" [(ngModel)]="div.ninos" min="1" [disabled]="resueltoDivision"/>
+    </label>
+    <div class="imagen-resultado">
+      <img *ngFor="let n of [].constructor(div.ninos || 0)" src="nino.png" class="img-nino grande" />
+    </div>
+
+    <button class="btn-verificar" (click)="verificarDivision()" [disabled]="resueltoDivision">Verificar</button>
+
+    <div *ngIf="resueltoDivision">
+      <p *ngIf="div.resultado === 1"><strong>Cada niño recibe: </strong> {{ div.resultado }} porción 🍰</p>
+      <p *ngIf="div.resultado !== 1"><strong>Cada niño recibe: </strong> {{ div.resultado }} porciones 🍰</p> 
+      <p class="recuadro-ejemplo"><code><strong>double tarta_por_niño = {{div.porciones}} / {{div.ninos}};</strong></code></p>
+      <div class="imagen-resultado">
+        <img *ngFor="let p of getPorcionesEnteras()" src="trozo_pastel.png" class="img-porcion grande" />
+      </div>
+    
+    </div>    
+  </div>
+
+
+
+  <!-- Variables -->
+  <div class="prueba">
+    <h2>📚GUARDAR RESULTADOS CON VARIABLES📚</h2>
+    <p>Así podemos guardar el resultado de una operación:</p>
+    <p class="recuadro-ejemplo"><em><strong>✏️ Así lo escribimos: <br /></strong></em> <strong>int</strong> nombre_variable_tipo = operador1      operación       operador2;</p>
+    <p class="recuadro-ejemplo"><em><strong>✏️ Así lo escribimos: </strong></em> <strong>double</strong> nombre_variable_tipo = operador1      operación       operador2;</p>
+
+    <br /><br /><hr>
+    <h2>📝crear variables📝</h2>
+
+    <div *ngFor="let variable of variables; let i = index">
+      <div *ngIf="i != 0">
+        <br />
+        <br />
+        <br/>
+        <br/>
+      </div>
+      <p><strong> Quiero guardar en mi variable que se llama: <em>{{ obtenerNombre(variable.label) }}</em> <br/> La operación es: <strong>{{ obtenerOperacion(variable.label) }}</strong>
+      </strong></p> 
+      <p>¿Cómo lo escribes?</p>
+      <input type="text" [(ngModel)]="variable.valor" [disabled]="variable.resuelto" />
+      <button class="btn-verificar" (click)="verificarVariable(i)" [disabled]="variable.resuelto">Verificar</button>
+      <p *ngIf="variable.resuelto">
+        <span *ngIf="variable.correcto">✅<br/></span>
+        <span *ngIf="!variable.correcto">❌<br/></span>
+      </p>
+      <p class="recuadro-ejemplo" *ngIf="variable.resuelto"><br/><code>{{ variable.label }}</code></p>
+    </div>
+  </div>
+
+  <div class="prueba">
+    <h2>📚¿QUÉ PASA SI MEZCLAMOS UN NÚMERO CON DECIMALES Y UNO SIN DECIMALES?📚</h2>
+    <p>Imagina que tienes dos cajas:</p>
+    <div class="lista-operadores">
+      <ul>
+      <li>🟫 <strong>Caja entera (<code>int</code>)</strong>: solo guarda números <strong>sin decimales</strong>, como <code>1</code>, <code>2</code>, <code>3</code>... <br/> </li>
+      <li>🟧 <strong>Caja decimal (<code>double</code>)</strong>: guarda <strong>todo</strong>, incluso <code>2.5</code>, <code>7.25</code> o <code>0.1</code>. </li>
+      </ul>
+    </div>
+    <br/>
+    <h3>¿Qué pasa si haces una operación entre los dos?</h3>
+    <p><strong>Siempre gana la caja grande</strong> (<code>double</code>) porque la caja <code>int</code> es demasiado pequeña para guardar decimales.</p>
+  
+    <div class="codigo-ejemplo">
+      <p><strong>🍩 Ejemplo:</strong></p>
+      <code>
+        double numero1 = 5.0;<br>
+        int numero2 = 2;<br><br>
+        double resultado = numero1 / numero2;
+      </code>
+      <p><strong>✅ Se guarda 2.5 correctamente</strong></p>
+    </div>
+  
+    <div class="codigo-ejemplo error">
+      <p><strong>❌ ¿Y si usamos int?</strong></p>
+      <code>
+        int resultado = numero1 / numero2;
+      </code>
+      <p><strong>⚠️ Solo se guarda 2, se pierde el .5</strong></p>
+    </div>
+    <br/>
+    <h3>¿Cuándo pasa esto?</h3>
+    <p>Esto ocurre siempre que usas <code>double</code> e <code>int</code> juntos, sin importar si haces:</p>
+    <div class="lista-operadores">
+      <ul>
+      <li>➕ Sumas </li>
+      <li>➖ Restas </li>
+      <li>✖️ Multiplicaciones</li>
+      <li>➗ Divisiones </li>
+      </ul>
+    </div>
+    <p><strong>✅ Usa <code>double</code></strong> si quieres guardar el resultado completo con decimales.</p>
+    
+    <br /><hr><br />
+
+    <h2>📝averigua el tipo de dato del resultado📝</h2>
+
+    <br/>
+    <p><strong>Definimos las variables:</strong></p>
+    <p><code>int numero1 = 5;</code></p>
+    <p><code>int numero2 = 2;</code></p>
+
+    <p><strong>¿Qué tipo será el resultado de cualquiera de estas operaciones?</strong></p>
+    <div class="bloque-codigo">
+      <code>numero1 + numero2;</code><br/>
+      <code>numero1 - numero2;</code><br/>
+      <code>numero1 * numero2;</code><br/>
+      <code>numero1 / numero2;</code><br/>
+    </div><br/>
+    <button class="btn-verificar" (click)="verificarTipoResultado('int')" [disabled]="tipoOperacion1.resuelto">int</button>
+    <button class="btn-verificar" (click)="verificarTipoResultado('double')" [disabled]="tipoOperacion1.resuelto">double</button>
+
+    <div *ngIf="tipoOperacion1.resuelto">
+      <p>
+        <span *ngIf="tipoOperacion1.correcto">✅ CORRECTO ✅</span>
+        <span *ngIf="!tipoOperacion1.correcto">❌ ERRÓNEO ❌ <br/>La respuesta correcta era <strong>{{ tipoOperacion1.tipoEsperado }}</strong></span>
+      </p>
+      <code>{{ tipoOperacion1.tipoEsperado }} total = numero1 * numero2;</code>
+    </div>
+
+    <br /><br/><br /><br/>
+
+
+    <p><strong>Definimos las variables:</strong></p>
+    <p><code>double numero1 = 5.0;</code></p>
+    <p><code>int numero2 = 2;</code></p>
+    <p><strong>¿Qué tipo será el resultado de cualquiera de estas operación?</strong></p>
+    <div class="bloque-codigo">
+      <code>numero1 + numero2;</code><br/>
+      <code>numero1 - numero2;</code><br/>
+      <code>numero1 * numero2;</code><br/>
+      <code>numero1 / numero2;</code><br/>
+      <br/>
+      <code>numero2 + numero1;</code><br/>
+      <code>numero2 - numero1;</code><br/>
+      <code>numero2 * numero1;</code><br/>
+      <code>numero2 / numero1;</code><br/>
+    </div><br/>
+    <button class="btn-verificar" (click)="verificarTipoResultado2('int')" [disabled]="tipoOperacion2.resuelto">int</button>
+    <button class="btn-verificar" (click)="verificarTipoResultado2('double')" [disabled]="tipoOperacion2.resuelto">double</button>
+
+    <div *ngIf="tipoOperacion2.resuelto">
+      <p>
+        <span *ngIf="tipoOperacion2.correcto">✅ CORRECTO ✅</span>
+        <span *ngIf="!tipoOperacion2.correcto">❌ ERRÓNEO ❌ <br/>La respuesta correcta era <strong>{{ tipoOperacion2.tipoEsperado }}</strong></span>
+      </p>
+      <code>{{ tipoOperacion2.tipoEsperado }} total = numero1 / numero2;</code>
+    </div>
+  </div>
+
+  <button class="btn-finish" (click)="finishLevel()" [disabled]="puedeFinalizar < puntos_maximos">Terminar Nivel</button>
+</div>

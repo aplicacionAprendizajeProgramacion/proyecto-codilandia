@@ -1,0 +1,58 @@
+<div class="niveles-container">
+  <div class="header">
+    <button class="volver" (click)="router.navigate(['/inicio-nino'])">◀ VOLVER</button>
+    <img src="logo.png" alt="Logo de Codilandia" class="logo" />
+  </div>
+
+  <div class="modal-overlay" *ngIf="isLoading">
+    <div class="spinner-modal">
+      <div class="spinner"></div>
+    </div>
+  </div>
+  
+  <h1>TUS NIVELES</h1>
+  <h2 class="titulillo" *ngIf="nombreAula">Aula: {{ nombreAula }}</h2>
+
+  <div class="dos-columnas-grid">
+    <div class="col-izq">
+      <div class="estrella-container">
+         <div class="estrella-item"
+             *ngFor="let num of [1,2,3,4,5,6,7,8,9,10,11]"
+              [class.disabled]="num > nivel_actual"
+              (click)="num <= nivel_actual && navigateToNivel(num)">
+           <div class="estrella">
+             <img [src]="num <= nivel_actual ? 'dibujo_estrella.png' : 'estrella_gris.png'"
+                  class="estrella-img"/>
+             <span class="estrella-num">{{ num }}</span>
+           </div>
+           <div class="estrella-titulo">{{ titulos[num - 1] }}</div>
+         </div>
+       </div>
+    </div>
+
+    <div class="col-der">
+      <div class="stats-box">
+        <h2>Estadísticas</h2>
+
+        <p *ngIf="notaMedia != null">
+          <strong>Nota media:</strong> {{ notaMedia | number:'1.2-2' }}
+        </p>
+        <p *ngIf="notaMedia == null">
+          <em>No hay resultados todavía</em>
+        </p>
+
+        <table *ngIf="notasPorNivel.length" class="notas-table">
+          <thead>
+            <tr><th>Nivel</th><th>Nota</th></tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let n of notasPorNivel">
+              <td>{{ n.numero_nivel }}</td>
+              <td>{{ n.nota | number:'1.2-2' }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

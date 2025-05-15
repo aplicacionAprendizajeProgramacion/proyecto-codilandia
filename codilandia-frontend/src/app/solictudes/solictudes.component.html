@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+    <img src="logo.png" alt="Logo de Codilandia" class="logo" />
+    <button class="volver" (click)="volver()">◀ VOLVER</button>
+    <div class="modal-overlay" *ngIf="isLoading">
+        <div class="spinner-modal">
+          <div class="spinner"></div>
+        </div>
+      </div> 
+    <h1 class="titulo">{{nombre_usuario}} | {{curso?.nombre_aula}} | Solicitudes</h1>
+    <div class="solicitudes-container">
+        <div class="solicitud" *ngFor="let solicitud of solicitudes">
+            <p> {{solicitud.nombre_nino}}</p>
+            <button class="btn aceptar" (click)="aceptar(solicitud)">Aceptar</button>
+            <button class="btn cancelar" (click)="cancelar(solicitud)">Cancelar</button>
+        </div>
+    </div>
+    <p *ngIf="solicitudes.length == 0">No hay solicitudes por el momento.</p>
+</html>
