@@ -21,10 +21,20 @@ pool.on('error', (err, client) => {
   console.error('Error inesperado en el idle client', err);
 });
 
+const allowedOrigins = [
+  "http://localhost:4200",
+  "https://proyecto-codilandia-frontend.onrender.com"
+];
+
 app.use(cors({
-  origin: 'http://localhost:4200',  // Permitir solicitudes solo desde el frontend
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos permitidos
-  allowedHeaders: ['Content-Type']  // Cabeceras permitidas
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true // si usas cookies/sesiones
 }));
 
 // Middleware para compartir el pool (solo una vez)
