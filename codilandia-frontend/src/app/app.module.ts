@@ -19,6 +19,18 @@ import { Nivel4Component } from './nivel4/nivel4.component';
 import { Nivel5Component } from './nivel5/nivel5.component';
 import { Nivel6Component } from './nivel6/nivel6.component';
 import { Nivel11Component } from './nivel11/nivel11.component';
+import { ProfesorComponent } from './profesor/profesor.component';
+import { CursoComponent } from './curso/curso.component';
+import { SolictudesComponent } from './solictudes/solictudes.component';
+import { AlumnosComponent } from './alumnos/alumnos.component';
+import { EstadisticasComponent } from './estadisticas/estadisticas.component';
+import { Nivel7Component } from './nivel7/nivel7.component';
+import { Nivel8Component } from './nivel8/nivel8.component';
+import { Nivel9Component } from './nivel9/nivel9.component';
+import { Nivel10Component } from './nivel10/nivel10.component';
+import { AuthGuard } from './guards/auth.guard';
+import { RoleGuard } from './guards/role.guard';
+
 
 
 @NgModule({
@@ -36,7 +48,16 @@ import { Nivel11Component } from './nivel11/nivel11.component';
     Nivel4Component,
     Nivel5Component,
     Nivel6Component,   
-    Nivel11Component   
+    Nivel11Component,
+    Nivel7Component,
+    Nivel8Component,
+    Nivel9Component,
+    Nivel10Component,
+    ProfesorComponent,
+    CursoComponent,
+    SolictudesComponent,
+    AlumnosComponent,
+    EstadisticasComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +66,7 @@ import { Nivel11Component } from './nivel11/nivel11.component';
     AppRoutingModule,
     DragDropModule
   ],
-  providers: [],
+  providers: [AuthGuard, RoleGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
